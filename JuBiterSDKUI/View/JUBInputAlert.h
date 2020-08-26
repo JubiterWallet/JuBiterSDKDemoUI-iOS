@@ -10,14 +10,26 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^JUBInputCallBack)( NSString * _Nullable pin);
+typedef void (^JUBInputCallBack)(NSString * _Nullable content);
 
 
 @interface JUBInputAlert : NSObject
 
-/// 弹出输入框弹框
-/// @param inputPinCallBack 点击确认回调的block
+/// Pop up the input box
+/// @param inputPinCallBack the block after clicking ok
 + (JUBInputAlert *)showInputPinAlert:(JUBInputCallBack)inputPinCallBack;
+
+/// The title of the pop-up box
+@property (nonatomic, copy) NSString *title;
+
+/// The details below the title of the pop-up box
+@property (nonatomic, copy) NSString *message;
+
+/// The prompt copy of the input box
+@property (nonatomic, copy) NSString *placeholder;
+
+/// The length of the input in the input box
+@property (nonatomic, assign) NSInteger limitLength;
 
 @end
 

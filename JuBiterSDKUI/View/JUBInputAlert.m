@@ -2,7 +2,7 @@
 //  JUBInputAlert.m
 //  JuBiterSDKDemo
 //
-//  Created by zhangchuan on 2020/6/30.
+//  Created by zhangchuan on 2020/8/26.
 //  Copyright © 2020 JuBiter. All rights reserved.
 //
 
@@ -17,8 +17,7 @@
 @interface JUBInputAlert()<UITextFieldDelegate>
 @property (nonatomic, weak) UIAlertAction *okAction;
 @property (nonatomic, weak) UITextField *inputPinTextField;
-@property (nonatomic, weak) UITextField *oldPinTextField;
-@property (nonatomic, weak) UITextField *n1wPinTextField;
+@property (nonatomic, weak) UIAlertController *alertController;
 @end
 
 
@@ -26,7 +25,7 @@
 
 
 #pragma mark - 输入pin码
-+ (JUBInputAlert *)showInputPinAlert:(JUBInputCallBack)inputPinCallBack {
++ (JUBInputAlert *)showInputPinAlert:(JUBInputCallBack)inputResultCallBack {
     
     __block JUBInputAlert *alertView;
     
@@ -34,7 +33,7 @@
         
         alertView = [[JUBInputAlert alloc] init];
         
-        [alertView showInputPinAlert:inputPinCallBack];
+        [alertView showInputPinAlert:inputResultCallBack];
         
     }];
         
@@ -42,15 +41,17 @@
     
 }
 
-- (void)showInputPinAlert:(JUBInputCallBack)inputPinCallBack {
+- (void)showInputPinAlert:(JUBInputCallBack)inputResultCallBack {
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Please enter PIN" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    self.alertController = alertController;
     
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
                                                            style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            inputPinCallBack(NULL);
+            inputResultCallBack(NULL);
         });
     }];
     
@@ -58,10 +59,10 @@
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
         // Solve the problem that the log cannot be updated in time because the operation is stuck in the main thread
-//        inputPinCallBack(self.inputPinTextField.text);
+//        inputResultCallBack(self.inputPinTextField.text);
         NSString *inputPin = self.inputPinTextField.text;
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            inputPinCallBack(inputPin);
+            inputResultCallBack(inputPin);
         });
     }];
     
@@ -75,7 +76,7 @@
 
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
         
-        textField.placeholder = @"Please enter PIN";
+        textField.placeholder = @"";
         
         textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         
@@ -93,6 +94,50 @@
                                     completion:nil];
 }
 
+#pragma mark - textField代理
+- (void)changedInputPinTextField:(UITextField *)textField {
+    
+    if (textField.text.length > self.limitLength) {
+        textField.text = [textField.text substringToIndex:textField.text.length - 1];
+    }
+        
+    if (textField.text.length > 0) {
+        self.okAction.enabled = YES;
+    }
+    else {
+        self.okAction.enabled = NO;
+    }
+}
 
+#pragma mark - getter和setter
+- (void)setTitle:(NSString *)title {
+    
+    _title = [title copy];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertController.title = [title copy];
+    });
+    
+}
+
+- (void)setMessage:(NSString *)message {
+    
+    _message = [message copy];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.alertController.message = [message copy];
+    });
+    
+}
+
+- (void)setPlaceholder:(NSString *)placeholder {
+    
+    _placeholder = placeholder;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.inputPinTextField.placeholder = placeholder;
+    });
+    
+}
 
 @end

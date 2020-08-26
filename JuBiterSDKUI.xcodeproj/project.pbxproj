@@ -49,7 +49,7 @@
 		685EA15524ED4DA70034809F /* Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA15224ED4DA70034809F /* Tools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA15624ED4DA70034809F /* FTConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA15324ED4DA70034809F /* FTConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA15924ED4F8C0034809F /* JUBWarningAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA0F124ED42FB0034809F /* JUBWarningAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6886C66424F5557700165048 /* JUBInputAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 6886C66224F5557700165048 /* JUBInputAlert.h */; };
+		6886C66424F5557700165048 /* JUBInputAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 6886C66224F5557700165048 /* JUBInputAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6886C66524F5557700165048 /* JUBInputAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886C66324F5557700165048 /* JUBInputAlert.m */; };
 		68C74D3024EE8A7600153659 /* ViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68C74D2E24EE8A7600153659 /* ViewController.h */; };
 		68C74D3124EE8A7600153659 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C74D2F24EE8A7600153659 /* ViewController.m */; };
@@ -232,7 +232,6 @@
 				685EA13F24ED4CA80034809F /* JUBPinAlertView.h in Headers */,
 				685EA14B24ED4CA80034809F /* JUBListAlert.h in Headers */,
 				685EA13C24ED4CA80034809F /* JUBInputAddressView.h in Headers */,
-				6886C66424F5557700165048 /* JUBInputAlert.h in Headers */,
 				685EA14324ED4CA80034809F /* JUBFingerManagerCell.h in Headers */,
 				685EA14224ED4CA80034809F /* JUBFingerEntryAlert.h in Headers */,
 				685EA13924ED4CA80034809F /* JUBCoinTestMainView.h in Headers */,
@@ -241,6 +240,7 @@
 				685EA14924ED4CA80034809F /* JUBBLEDeviceListCell.h in Headers */,
 				685EA14124ED4CA80034809F /* JUBAlertView.h in Headers */,
 				685EA14E24ED4CA80034809F /* FTResultDataCell.h in Headers */,
+				6886C66424F5557700165048 /* JUBInputAlert.h in Headers */,
 				685EA11E24ED4C9F0034809F /* JUBButtonModel.h in Headers */,
 				685EA11F24ED4C9F0034809F /* FTResultDataModel.h in Headers */,
 				685EA11524ED4C960034809F /* JUBFingerManagerBaseController.h in Headers */,
