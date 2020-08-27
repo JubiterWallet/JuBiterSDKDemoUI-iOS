@@ -170,7 +170,11 @@
 
 - (void)cancle {
     
-    [self removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self removeFromSuperview];
+        
+    });
     
 }
 
@@ -243,9 +247,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self cancle];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        self.selectCellCallBackBlock(self.itemsArray[indexPath.row]);
+        
+        [self cancle];
+        
+    });
     
-    self.selectCellCallBackBlock(self.itemsArray[indexPath.row]);
+    
 }
 
 #pragma mark - 刷新tableview的方法

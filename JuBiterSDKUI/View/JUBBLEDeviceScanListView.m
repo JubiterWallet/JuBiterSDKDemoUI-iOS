@@ -169,8 +169,11 @@
 - (void)cancle {
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        
         [self removeFromSuperview];
-    });    
+        
+    });
+    
 }
 
 
@@ -210,10 +213,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
         self.getSelectBLEDeviceCallBackBlock(self.BLEDeviceArray[indexPath.row]);
+        
+        [self cancle];
+        
     });
-    
-    [self cancle];
     
 }
 
