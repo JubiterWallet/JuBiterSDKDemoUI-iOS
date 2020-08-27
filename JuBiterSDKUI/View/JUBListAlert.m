@@ -88,8 +88,13 @@
 }
 
 - (void)setTitle:(NSString *)title {
+    
     _title = [title copy];
-    self.titleLabel.text = _title;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.titleLabel.text = _title;
+    });
+    
 }
 
 #pragma mark - 添加mainview上面的子视图
