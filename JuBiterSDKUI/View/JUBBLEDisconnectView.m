@@ -9,7 +9,7 @@
 #import "JUBBLEDisconnectView.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBBLEDeviceListCell.h"
+#import "JUBListAlertCell.h"
 
 @interface JUBBLEDisconnectView()<UITableViewDelegate, UITableViewDataSource>
 
@@ -202,10 +202,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JUBBLEDeviceListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    JUBListAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
-        cell = [[JUBBLEDeviceListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[JUBListAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     cell.deviceName = _BLEDeviceArray[indexPath.row];

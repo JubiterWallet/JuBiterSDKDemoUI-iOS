@@ -8,7 +8,6 @@
 
 #import "JUBCoinTestListBaseController.h"
 #import "JUBCoinTestDetailBaseController.h"
-#import "JUBBLEDeviceScanListView.h"
 
 @interface JUBCoinTestListBaseController ()
 

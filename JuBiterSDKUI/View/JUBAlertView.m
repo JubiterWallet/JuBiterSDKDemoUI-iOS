@@ -9,7 +9,7 @@
 #import "JUBAlertView.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBBLEDeviceListCell.h"
+#import "JUBListAlertCell.h"
 
 
 @interface JUBAlertView()

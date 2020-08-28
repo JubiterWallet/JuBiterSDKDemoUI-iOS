@@ -9,7 +9,7 @@
 #import "JUBListAlert.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBBLEDeviceListCell.h"
+#import "JUBListAlertCell.h"
 
 @interface JUBListAlert()<UITableViewDelegate, UITableViewDataSource>
 
@@ -89,10 +89,12 @@
 
 - (void)setTitle:(NSString *)title {
     
-    _title = [title copy];
+    NSString *tempTitle = [title copy];
+    
+    _title = tempTitle;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.titleLabel.text = _title;
+        self.titleLabel.text = tempTitle;
     });
     
 }
@@ -237,10 +239,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JUBBLEDeviceListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    JUBListAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
-        cell = [[JUBBLEDeviceListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[JUBListAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     cell.deviceName = _itemsArray[indexPath.row];

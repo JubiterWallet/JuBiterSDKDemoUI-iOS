@@ -9,7 +9,7 @@
 #import "JUBSelectApduView.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBBLEDeviceListCell.h"
+#import "JUBListAlertCell.h"
 #import "JUBAlertView.h"
 
 #define ALPHANUM @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"

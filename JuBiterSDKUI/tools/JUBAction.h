@@ -12,12 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JUBAction : NSObject
 
-
-/// <#Description#>
+/// Creates a control object for the function execution process
 + (JUBAction *)action;
 
+/// Wait for the object's action to execute
 - (void)await;
 
+/// Execute the action of the object
 - (void)doAction;
 
 @end
