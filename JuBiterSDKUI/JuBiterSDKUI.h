@@ -36,6 +36,7 @@
 
 //tool
 #import "Tools.h"
+#import "JUBAction.h"
 #import "FTConstant.h"
 
 
