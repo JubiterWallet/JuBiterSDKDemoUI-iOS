@@ -32,17 +32,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self initData];
+    [self baseInitData];
     
-    [self initUI];
+    [self baseInitUI];
 }
 
-- (void)initData {
+- (void)baseInitData {
     _selectedFingerIndex = 0;
 }
 
 #pragma mark - 初始化UI
-- (void)initUI {
+- (void)baseInitUI {
     
     self.view.backgroundColor = [UIColor whiteColor];
     

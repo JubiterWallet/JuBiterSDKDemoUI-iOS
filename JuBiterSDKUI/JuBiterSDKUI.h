@@ -30,7 +30,6 @@
 #import "JUBCoinTestDetailBaseController.h"
 #import "JUBCoinTestListBaseController.h"
 #import "JUBFingerManagerBaseController.h"
-#import "JUBNavigationController.h"
 
 //tool
 #import "Tools.h"

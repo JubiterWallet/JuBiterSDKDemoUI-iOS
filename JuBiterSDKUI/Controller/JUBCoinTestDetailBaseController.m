@@ -34,20 +34,21 @@
     
     [super viewWillAppear:animated];
     
-    [self initData];
+    [self baseInitData];
     
-    [self initUI];
+    [self baseInitUI];
 }
 
 
-- (void)initData {
+- (void)baseInitData {
     
     _selectCoinTypeIndex = 0;
+    
 }
 
 
 #pragma mark - 初始化UI
-- (void)initUI {
+- (void)baseInitUI {
     
     self.view.backgroundColor = [UIColor whiteColor];
     

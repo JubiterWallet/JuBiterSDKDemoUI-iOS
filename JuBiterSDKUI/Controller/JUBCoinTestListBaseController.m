@@ -33,13 +33,13 @@
     
     [super viewWillAppear:animated];
     
-    [self initData];
+    [self baseInitData];
 
-    [self initUI];
+    [self baseInitUI];
 }
 
 
-- (void)initData {
+- (void)baseInitData {
     
     NSString *indexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
     
@@ -50,7 +50,7 @@
 
 
 #pragma mark - 初始化UI
-- (void)initUI {
+- (void)baseInitUI {
     
     self.view.backgroundColor = [UIColor whiteColor];
     
