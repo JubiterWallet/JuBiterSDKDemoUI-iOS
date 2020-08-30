@@ -1,15 +1,15 @@
 //
-//  JUBListAlertCell.m
+//  JUBListCell.m
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/3/20.
 //  Copyright © 2020 JuBiter. All rights reserved.
 //
 
-#import "JUBListAlertCell.h"
+#import "JUBListCell.h"
 #import "FTConstant.h"
 
-@interface JUBListAlertCell ()
+@interface JUBListCell ()
 
 @property (nonatomic, weak) UILabel *timeLabel;
 @property (nonatomic, weak) UILabel *typeLabel;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation JUBListAlertCell
+@implementation JUBListCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

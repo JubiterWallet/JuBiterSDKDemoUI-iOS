@@ -1,5 +1,5 @@
 //
-//  JUBListAlertCell.h
+//  JUBListCell.h
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/5/14.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JUBListAlertCell : UITableViewCell
+@interface JUBListCell : UITableViewCell
 
 @property (nonatomic, copy) NSString *deviceName;
 

@@ -20,7 +20,6 @@
 
 @implementation JUBCoinTestListBaseController
 
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];

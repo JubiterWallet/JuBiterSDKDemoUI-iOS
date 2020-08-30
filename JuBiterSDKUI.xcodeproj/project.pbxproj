@@ -21,7 +21,7 @@
 		685EA11D24ED4C9F0034809F /* FTResultDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA11924ED4C9F0034809F /* FTResultDataModel.m */; };
 		685EA11E24ED4C9F0034809F /* JUBButtonModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA11A24ED4C9F0034809F /* JUBButtonModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA11F24ED4C9F0034809F /* FTResultDataModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA11B24ED4C9F0034809F /* FTResultDataModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		685EA13824ED4CA80034809F /* JUBListAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA12024ED4CA70034809F /* JUBListAlertCell.m */; };
+		685EA13824ED4CA80034809F /* JUBListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA12024ED4CA70034809F /* JUBListCell.m */; };
 		685EA13924ED4CA80034809F /* JUBCoinTestMainView.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA12124ED4CA70034809F /* JUBCoinTestMainView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA13A24ED4CA80034809F /* FTResultDataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA12224ED4CA70034809F /* FTResultDataCell.m */; };
 		685EA13C24ED4CA80034809F /* JUBInputAddressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA12424ED4CA70034809F /* JUBInputAddressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,14 +35,12 @@
 		685EA14424ED4CA80034809F /* JUBSelectApduView.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA12C24ED4CA70034809F /* JUBSelectApduView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA14624ED4CA80034809F /* JUBFingerEntryAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA12E24ED4CA70034809F /* JUBFingerEntryAlert.m */; };
 		685EA14724ED4CA80034809F /* JUBListAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA12F24ED4CA80034809F /* JUBListAlert.m */; };
-		685EA14824ED4CA80034809F /* JUBBLEDisconnectView.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA13024ED4CA80034809F /* JUBBLEDisconnectView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		685EA14924ED4CA80034809F /* JUBListAlertCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA13124ED4CA80034809F /* JUBListAlertCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		685EA14924ED4CA80034809F /* JUBListCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA13124ED4CA80034809F /* JUBListCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA14A24ED4CA80034809F /* JUBCoinTestMainView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 685EA13224ED4CA80034809F /* JUBCoinTestMainView.mm */; };
 		685EA14B24ED4CA80034809F /* JUBListAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA13324ED4CA80034809F /* JUBListAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA14C24ED4CA80034809F /* JUBFingerManagerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA13424ED4CA80034809F /* JUBFingerManagerCell.m */; };
 		685EA14D24ED4CA80034809F /* JUBPinAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA13524ED4CA80034809F /* JUBPinAlertView.m */; };
 		685EA14E24ED4CA80034809F /* FTResultDataCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA13624ED4CA80034809F /* FTResultDataCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		685EA14F24ED4CA80034809F /* JUBBLEDisconnectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA13724ED4CA80034809F /* JUBBLEDisconnectView.m */; };
 		685EA15424ED4DA70034809F /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 685EA15124ED4DA70034809F /* Tools.m */; };
 		685EA15524ED4DA70034809F /* Tools.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA15224ED4DA70034809F /* Tools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		685EA15624ED4DA70034809F /* FTConstant.h in Headers */ = {isa = PBXBuildFile; fileRef = 685EA15324ED4DA70034809F /* FTConstant.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,7 +71,7 @@
 		685EA11924ED4C9F0034809F /* FTResultDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTResultDataModel.m; sourceTree = "<group>"; };
 		685EA11A24ED4C9F0034809F /* JUBButtonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBButtonModel.h; sourceTree = "<group>"; };
 		685EA11B24ED4C9F0034809F /* FTResultDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTResultDataModel.h; sourceTree = "<group>"; };
-		685EA12024ED4CA70034809F /* JUBListAlertCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBListAlertCell.m; sourceTree = "<group>"; };
+		685EA12024ED4CA70034809F /* JUBListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBListCell.m; sourceTree = "<group>"; };
 		685EA12124ED4CA70034809F /* JUBCoinTestMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBCoinTestMainView.h; sourceTree = "<group>"; };
 		685EA12224ED4CA70034809F /* FTResultDataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTResultDataCell.m; sourceTree = "<group>"; };
 		685EA12424ED4CA70034809F /* JUBInputAddressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBInputAddressView.h; sourceTree = "<group>"; };
@@ -87,14 +85,12 @@
 		685EA12C24ED4CA70034809F /* JUBSelectApduView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBSelectApduView.h; sourceTree = "<group>"; };
 		685EA12E24ED4CA70034809F /* JUBFingerEntryAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBFingerEntryAlert.m; sourceTree = "<group>"; };
 		685EA12F24ED4CA80034809F /* JUBListAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBListAlert.m; sourceTree = "<group>"; };
-		685EA13024ED4CA80034809F /* JUBBLEDisconnectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBBLEDisconnectView.h; sourceTree = "<group>"; };
-		685EA13124ED4CA80034809F /* JUBListAlertCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBListAlertCell.h; sourceTree = "<group>"; };
+		685EA13124ED4CA80034809F /* JUBListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBListCell.h; sourceTree = "<group>"; };
 		685EA13224ED4CA80034809F /* JUBCoinTestMainView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JUBCoinTestMainView.mm; sourceTree = "<group>"; };
 		685EA13324ED4CA80034809F /* JUBListAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBListAlert.h; sourceTree = "<group>"; };
 		685EA13424ED4CA80034809F /* JUBFingerManagerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBFingerManagerCell.m; sourceTree = "<group>"; };
 		685EA13524ED4CA80034809F /* JUBPinAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBPinAlertView.m; sourceTree = "<group>"; };
 		685EA13624ED4CA80034809F /* FTResultDataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTResultDataCell.h; sourceTree = "<group>"; };
-		685EA13724ED4CA80034809F /* JUBBLEDisconnectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBBLEDisconnectView.m; sourceTree = "<group>"; };
 		685EA15124ED4DA70034809F /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		685EA15224ED4DA70034809F /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		685EA15324ED4DA70034809F /* FTConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTConstant.h; sourceTree = "<group>"; };
@@ -164,10 +160,8 @@
 				685EA12224ED4CA70034809F /* FTResultDataCell.m */,
 				685EA12924ED4CA70034809F /* JUBAlertView.h */,
 				685EA12524ED4CA70034809F /* JUBAlertView.m */,
-				685EA13124ED4CA80034809F /* JUBListAlertCell.h */,
-				685EA12024ED4CA70034809F /* JUBListAlertCell.m */,
-				685EA13024ED4CA80034809F /* JUBBLEDisconnectView.h */,
-				685EA13724ED4CA80034809F /* JUBBLEDisconnectView.m */,
+				685EA13124ED4CA80034809F /* JUBListCell.h */,
+				685EA12024ED4CA70034809F /* JUBListCell.m */,
 				685EA12124ED4CA70034809F /* JUBCoinTestMainView.h */,
 				685EA13224ED4CA80034809F /* JUBCoinTestMainView.mm */,
 				685EA12A24ED4CA70034809F /* JUBFingerEntryAlert.h */,
@@ -236,8 +230,7 @@
 				685EA14224ED4CA80034809F /* JUBFingerEntryAlert.h in Headers */,
 				685EA13924ED4CA80034809F /* JUBCoinTestMainView.h in Headers */,
 				6886C67224F7D54000165048 /* JUBAction.h in Headers */,
-				685EA14824ED4CA80034809F /* JUBBLEDisconnectView.h in Headers */,
-				685EA14924ED4CA80034809F /* JUBListAlertCell.h in Headers */,
+				685EA14924ED4CA80034809F /* JUBListCell.h in Headers */,
 				685EA14124ED4CA80034809F /* JUBAlertView.h in Headers */,
 				685EA14E24ED4CA80034809F /* FTResultDataCell.h in Headers */,
 				6886C66424F5557700165048 /* JUBInputAlert.h in Headers */,
@@ -321,11 +314,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				685EA14F24ED4CA80034809F /* JUBBLEDisconnectView.m in Sources */,
 				6886C66524F5557700165048 /* JUBInputAlert.m in Sources */,
 				685EA13A24ED4CA80034809F /* FTResultDataCell.m in Sources */,
 				685EA14624ED4CA80034809F /* JUBFingerEntryAlert.m in Sources */,
-				685EA13824ED4CA80034809F /* JUBListAlertCell.m in Sources */,
+				685EA13824ED4CA80034809F /* JUBListCell.m in Sources */,
 				685EA11D24ED4C9F0034809F /* FTResultDataModel.m in Sources */,
 				685EA14024ED4CA80034809F /* JUBSelectApduView.m in Sources */,
 				685EA14A24ED4CA80034809F /* JUBCoinTestMainView.mm in Sources */,

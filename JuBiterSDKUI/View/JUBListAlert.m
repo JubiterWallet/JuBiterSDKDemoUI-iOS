@@ -9,7 +9,7 @@
 #import "JUBListAlert.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBListAlertCell.h"
+#import "JUBListCell.h"
 
 @interface JUBListAlert()<UITableViewDelegate, UITableViewDataSource>
 
@@ -239,10 +239,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    JUBListAlertCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    JUBListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if (cell == nil) {
-        cell = [[JUBListAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[JUBListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
     cell.deviceName = _itemsArray[indexPath.row];

@@ -9,7 +9,7 @@
 #import "JUBFingerEntryAlert.h"
 #import "FTConstant.h"
 #import "Tools.h"
-#import "JUBListAlertCell.h"
+#import "JUBListCell.h"
 #import "JUBWarningAlert.h"
 
 @interface JUBFingerEntryAlert()

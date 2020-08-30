@@ -15,8 +15,7 @@
 //view
 #import "FTResultDataCell.h"
 #import "JUBAlertView.h"
-#import "JUBBLEDeviceListCell.h"
-#import "JUBBLEDisconnectView.h"
+#import "JUBListCell.h"
 #import "JUBCoinTestMainView.h"
 #import "JUBFingerEntryAlert.h"
 #import "JUBFingerManagerCell.h"
