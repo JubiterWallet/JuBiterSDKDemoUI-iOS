@@ -167,11 +167,23 @@
     
     closeButton.layer.masksToBounds = YES;
     
-    [closeButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+    [closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     
     [mainView addSubview:closeButton];
     
     return closeButton;
+    
+}
+
+- (void)close {
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        self.selectCellCallBackBlock(nil);
+        
+    });
+    
+    [self cancle];
     
 }
 
@@ -258,10 +270,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
         self.selectCellCallBackBlock(self.itemsArray[indexPath.row]);
         
-        [self cancle];
-        
     });
     
+    [self cancle];
     
 }
 

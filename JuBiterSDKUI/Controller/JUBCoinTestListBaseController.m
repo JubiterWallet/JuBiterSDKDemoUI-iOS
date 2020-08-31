@@ -27,15 +27,20 @@
     
     self.navigationController.navigationBar.translucent = NO;
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self baseInitData];
+
+        [self baseInitUI];
+        
+    });
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    
-    [self baseInitData];
 
-    [self baseInitUI];
 }
 
 

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^JUBSelectCellCallBackBlock)(NSString *selectedItem);
+typedef void (^JUBSelectCellCallBackBlock)(NSString * _Nullable selectedItem);
 
 @interface JUBListAlert : UIView
 

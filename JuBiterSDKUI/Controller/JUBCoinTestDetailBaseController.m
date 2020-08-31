@@ -27,6 +27,11 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self baseInitData];
+    
+    [self baseInitUI];
+    
 }
 
 
@@ -34,9 +39,6 @@
     
     [super viewWillAppear:animated];
     
-    [self baseInitData];
-    
-    [self baseInitUI];
 }
 
 

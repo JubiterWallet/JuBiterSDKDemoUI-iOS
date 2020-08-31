@@ -23,10 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)addMsgData:(NSString *)msgData;
 
-- (void)initUI;
-
-- (void)initData;
-
 @end
 
 NS_ASSUME_NONNULL_END
