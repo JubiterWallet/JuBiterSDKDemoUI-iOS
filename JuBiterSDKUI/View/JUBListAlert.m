@@ -257,7 +257,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         cell = [[JUBListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    cell.deviceName = _itemsArray[indexPath.row];
+    cell.content = _itemsArray[indexPath.row];
     
     return  cell;
 }

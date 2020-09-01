@@ -16,19 +16,18 @@
 #import "FTResultDataCell.h"
 #import "JUBAlertView.h"
 #import "JUBListCell.h"
-#import "JUBCoinTestMainView.h"
+#import "JUBMainView.h"
 #import "JUBFingerEntryAlert.h"
 #import "JUBFingerManagerCell.h"
 #import "JUBInputAddressView.h"
 #import "JUBListAlert.h"
 #import "JUBPinAlertView.h"
-#import "JUBSelectApduView.h"
 #import "JUBWarningAlert.h"
 #import "JUBInputAlert.h"
 
 //controller
-#import "JUBCoinTestDetailBaseController.h"
-#import "JUBCoinTestListBaseController.h"
+#import "JUBDetailBaseController.h"
+#import "JUBListBaseController.h"
 #import "JUBFingerManagerBaseController.h"
 
 //tool

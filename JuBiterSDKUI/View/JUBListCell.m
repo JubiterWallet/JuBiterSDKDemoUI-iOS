@@ -62,10 +62,8 @@
     
 }
 
-- (void)setDeviceName:(NSString *)deviceName {
-    
-    self.contentLabel.text = deviceName;
-    
+- (void)setContent:(NSString *)content {
+    self.contentLabel.text = content;
 }
 
 #pragma mark - tool

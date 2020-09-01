@@ -1,15 +1,15 @@
 //
-//  JUBCoinTestDetailBaseController.m
+//  JUBDetailBaseController.m
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/4/28.
 //  Copyright © 2020 JuBiter. All rights reserved.
 //  此类为测试详情页面的基础类，不可在里面实现业务逻辑，用户应该继承自该类之后在自己的类里面实现具体的业务逻辑
 
-#import "JUBCoinTestDetailBaseController.h"
+#import "JUBDetailBaseController.h"
 #import "FTConstant.h"
 
-@interface JUBCoinTestDetailBaseController ()<UIPickerViewDelegate,UIPickerViewDataSource>
+@interface JUBDetailBaseController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (nonatomic, strong) UIButton *selectedIconTypeButton;
 
@@ -17,11 +17,11 @@
 
 @property (nonatomic, strong) UIPickerView *pickerView;
 
-@property (nonatomic, weak, readonly) JUBCoinTestMainView *transmissionView;
+@property (nonatomic, weak, readonly) JUBMainView *transmissionView;
 
 @end
 
-@implementation JUBCoinTestDetailBaseController
+@implementation JUBDetailBaseController
 
 - (void)viewDidLoad {
     
@@ -61,11 +61,11 @@
         [self.view addSubview:self.selectedIconTypeButton];
     }
     
-    __weak JUBCoinTestDetailBaseController *weakSelf = self;
+    __weak JUBDetailBaseController *weakSelf = self;
     
     CGFloat startY = self.selectedIconTypeButton ? CGRectGetMaxY(self.selectedIconTypeButton.frame) + 10 : 0;
     
-    JUBCoinTestMainView *view = [JUBCoinTestMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, CGRectGetHeight(self.view.frame) - startY) buttonArray:self.buttonArray];
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, CGRectGetHeight(self.view.frame) - startY) buttonArray:self.buttonArray];
     
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
         
@@ -318,7 +318,7 @@
 
 - (void)selectCoinType {
     
-    NSLog(@"JUBCoinTestDetailBaseController--selectCoinTypeIndex");
+    NSLog(@"JUBDetailBaseController--selectCoinTypeIndex");
 }
 
 

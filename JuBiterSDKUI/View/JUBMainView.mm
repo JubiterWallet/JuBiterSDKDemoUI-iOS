@@ -1,24 +1,24 @@
 //
-//  JUBCoinTestMainView.m
+//  JUBMainView.m
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/3/20.
 //  Copyright © 2020 JuBiter. All rights reserved.
 //  所有控制器界面的主界面
 
-#import "JUBCoinTestMainView.h"
+#import "JUBMainView.h"
 #import <CoreNFC/CoreNFC.h>
 #import "FTConstant.h"
 #import "FTResultDataCell.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Tools.h"
 
-static JUBCoinTestMainView *selfClass =nil;
+static JUBMainView *selfClass =nil;
 
 //static NSArray<JUBButtonModel *> *buttonArray;
 
 API_AVAILABLE(ios(13.0))
-@interface JUBCoinTestMainView ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface JUBMainView ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property (nonatomic, weak) UITableView *msgTableView;
 
@@ -28,11 +28,11 @@ API_AVAILABLE(ios(13.0))
 
 @end
 
-@implementation JUBCoinTestMainView
+@implementation JUBMainView
 
-+ (JUBCoinTestMainView *)coinTestMainViewWithFrame:(CGRect)frame buttonArray:(nullable NSArray<JUBButtonModel *> *)btnArray {
++ (JUBMainView *)coinTestMainViewWithFrame:(CGRect)frame buttonArray:(nullable NSArray<JUBButtonModel *> *)btnArray {
         
-    JUBCoinTestMainView *coinTestMainView = [[self alloc] initWithFrame:frame];
+    JUBMainView *coinTestMainView = [[self alloc] initWithFrame:frame];
     
     coinTestMainView.buttonArray = btnArray;
     

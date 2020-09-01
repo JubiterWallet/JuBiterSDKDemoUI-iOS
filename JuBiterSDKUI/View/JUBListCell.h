@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JUBListCell : UITableViewCell
 
-@property (nonatomic, copy) NSString *deviceName;
+@property (nonatomic, copy) NSString *content;
 
 @end
 

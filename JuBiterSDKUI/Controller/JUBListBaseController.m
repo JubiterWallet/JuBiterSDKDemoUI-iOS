@@ -1,24 +1,24 @@
 //
-//  JUBCoinTestListBaseController.m
+//  JUBListBaseController.m
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/4/28.
 //  Copyright © 2020 JuBiter. All rights reserved.
 //  首页的基类，用户应该继承本类，去实现自己的业务逻辑
 
-#import "JUBCoinTestListBaseController.h"
-#import "JUBCoinTestDetailBaseController.h"
+#import "JUBListBaseController.h"
+#import "JUBDetailBaseController.h"
 
-@interface JUBCoinTestListBaseController ()
+@interface JUBListBaseController ()
 
-@property (nonatomic, weak, readonly) JUBCoinTestMainView *transmissionView;
+@property (nonatomic, weak, readonly) JUBMainView *transmissionView;
 @property (nonatomic, weak) UIButton *disConnectBLEButton;
 @property (nonatomic, weak) UIButton *scanBLEButton;
 
 @end
 
 
-@implementation JUBCoinTestListBaseController
+@implementation JUBListBaseController
 
 - (void)viewDidLoad {
     
@@ -84,9 +84,9 @@
         [self.view addSubview:TransmitSegment];
     }
     
-    __weak JUBCoinTestListBaseController *weakSelf = self;
+    __weak JUBListBaseController *weakSelf = self;
     
-    JUBCoinTestMainView *view = [JUBCoinTestMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(TransmitSegment.frame), KScreenWidth, CGRectGetHeight(self.view.frame) - CGRectGetMaxY(TransmitSegment.frame)) buttonArray:self.buttonArray];
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(TransmitSegment.frame), KScreenWidth, CGRectGetHeight(self.view.frame) - CGRectGetMaxY(TransmitSegment.frame)) buttonArray:self.buttonArray];
     
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
         NSLog(@"coinSeriesType = %ld", (long)index);

@@ -17,7 +17,7 @@
 
 @property (nonatomic, strong) UIView *topBar;
 
-@property (nonatomic, weak, readonly) JUBCoinTestMainView *transmissionView;
+@property (nonatomic, weak, readonly) JUBMainView *transmissionView;
 
 @property (nonatomic, weak) UITableView *fingerTableView;
 
@@ -142,7 +142,7 @@
     
     CGFloat startY = CGRectGetMaxY(self.fingerTableView.frame) + 15;
     
-    JUBCoinTestMainView *view = [JUBCoinTestMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - startY) buttonArray:nil];
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - startY) buttonArray:nil];
     
     view.backgroundColor = [UIColor yellowColor];
     
