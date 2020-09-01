@@ -24,17 +24,11 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.navigationController.navigationBar.translucent = NO;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self baseInitData];
+    [self baseInitData];
 
-        [self baseInitUI];
-        
-    });
-    
+    [self baseInitUI];
+            
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -231,6 +225,8 @@
 
 
 - (void)setShowBLEButton:(BOOL)showBLEButton {
+    
+    _showBLEButton = showBLEButton;
     
     if (showBLEButton) {
         self.disConnectBLEButton.hidden = NO;
