@@ -282,8 +282,23 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 #pragma mark - getter和setter方法
 
 - (void)setFingerArray:(NSArray<NSString *> *)fingerArray {
+    
     _fingerArray = fingerArray;
-    [self.fingerTableView reloadData];
+    
+    if ([NSThread isMainThread]) {
+        
+        [self.fingerTableView reloadData];
+        
+    } else {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.fingerTableView reloadData];
+            
+        });
+        
+    }
+    
 }
 
 @end
