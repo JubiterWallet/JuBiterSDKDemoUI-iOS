@@ -188,8 +188,13 @@ API_AVAILABLE(ios(13.0))
     
     _buttonArray = buttonArray;
     
-    //刷新界面
-    [self initOrderUI];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        //刷新界面
+        [self initOrderUI];
+        
+    });
+    
     
 }
 
