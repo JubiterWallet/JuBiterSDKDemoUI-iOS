@@ -157,7 +157,7 @@
     
     UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, buttonY, buttonWidth, buttonHeight)];
     
-    [closeButton setTitle:@"关闭" forState:UIControlStateNormal];
+    [closeButton setTitle:@"CLOSE" forState:UIControlStateNormal];
     
     [closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
@@ -183,11 +183,11 @@
         
     });
     
-    [self cancle];
+    [self cancel];
     
 }
 
-- (void)cancle {
+- (void)cancel {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -272,7 +272,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         
     });
     
-    [self cancle];
+    [self cancel];
     
 }
 

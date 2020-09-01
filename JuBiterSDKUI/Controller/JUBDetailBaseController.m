@@ -200,10 +200,15 @@
 - (void)setButtonArray:(NSArray<JUBButtonModel *> *)buttonArray {
     
     _buttonArray = buttonArray;
-    
-    if (self.transmissionView) {
+       
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+       if (self.transmissionView) {
            self.transmissionView.buttonArray = buttonArray;
-    }
+       }
+       
+    });
+
     
 }
 
@@ -238,7 +243,7 @@
         
         [leftButton setTitle:@"CANCEL" forState:UIControlStateNormal];
         
-        [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+        [leftButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
         
         leftButton.layer.cornerRadius = 4;
         
@@ -270,9 +275,9 @@
 }
 
 
-- (void)cancle {
+- (void)cancel {
     
-    NSLog(@"cancle");
+    NSLog(@"cancel");
     
     [self hidenPickerView];
 }

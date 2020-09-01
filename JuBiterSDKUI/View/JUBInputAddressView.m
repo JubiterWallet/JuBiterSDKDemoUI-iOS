@@ -90,7 +90,7 @@
     
     [self addAddressIndexTextFieldAboveSuperView:mainView frame:CGRectMake(CGRectGetMaxX(line.frame), CGRectGetMidY(line.frame) - 15, 100, 30)];
     
-    [self addCancleAndOkButtonAboveSuperView:mainView];
+    [self addCancelAndOkButtonAboveSuperView:mainView];
     
 }
 
@@ -214,7 +214,7 @@
     
 }
 
-- (void)addCancleAndOkButtonAboveSuperView:(UIView *)mainView {
+- (void)addCancelAndOkButtonAboveSuperView:(UIView *)mainView {
     
     CGFloat mainViewWidth = CGRectGetWidth(mainView.frame);
     
@@ -238,7 +238,7 @@
     
     leftButton.layer.masksToBounds = YES;
     
-    [leftButton addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     
     [mainView addSubview:leftButton];
     
@@ -261,9 +261,13 @@
 }
 
 #pragma mark - action
-- (void)cancle {
+- (void)cancel {
     
-    [self removeFromSuperview];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self removeFromSuperview];
+        
+    });
     
 }
 
