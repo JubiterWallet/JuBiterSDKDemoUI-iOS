@@ -32,7 +32,7 @@ typedef void (^JUBDeleteCellCallBackBlock)(NSString * _Nullable deletedItem);
 //批量移除内容
 - (void)removeAllItems;
 
-@property (nonatomic, assign) JUBDeleteCellCallBackBlock deleteCellCallBackBlock;
+@property (nonatomic, copy) JUBDeleteCellCallBackBlock deleteCellCallBackBlock;
 
 @end
 

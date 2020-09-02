@@ -44,7 +44,6 @@
 
 }
 
-
 #pragma mark - 初始化UI
 - (void)baseInitUI {
     
@@ -54,19 +53,8 @@
         
     [self initOrderUI];
     
-    __weak JUBInputOrderBaseController *weakSelf = self;
+    [self initMainView];
     
-    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(self.apduTextView.frame) + 10, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - CGRectGetHeight(self.apduTextView.frame) - 10) buttonArray:self.buttonArray];
-        
-    [view setTransmissionViewCallBackBlock:^(NSInteger index) {
-        
-        [weakSelf gotoDetailAccordingCoinSeriesType:index];
-        
-    }];
-    
-    _transmissionView = view;
-    
-    [self.view addSubview:view];
 }
 
 - (void)textViewDidChange:(UITextView *)textView {
@@ -118,6 +106,22 @@
                 
     }
 
+}
+
+- (void)initMainView {
+    __weak JUBInputOrderBaseController *weakSelf = self;
+    
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(self.apduTextView.frame) + 10, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - CGRectGetHeight(self.apduTextView.frame) - 10) buttonArray:self.buttonArray];
+        
+    [view setTransmissionViewCallBackBlock:^(NSInteger index) {
+        
+        [weakSelf gotoDetailAccordingCoinSeriesType:index];
+        
+    }];
+    
+    _transmissionView = view;
+    
+    [self.view addSubview:view];
 }
 
 #pragma mark - 页面按钮点击回调方法，子类如果想接受回调可以重写此类方法

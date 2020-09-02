@@ -35,7 +35,7 @@
 
 - (void)addLine {
     
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 49, KScreenWidth, 1)];
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 1)];
     
     line.backgroundColor = [UIColor colorWithRed:0xe0/255.0 green:0xe0/255.0 blue:0xe0/255.0 alpha:1];
     
@@ -46,7 +46,7 @@
     
     if (!_contentLabel) {
         
-        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, KScreenWidth - 2 * 15, 50)];
+        UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 1, KScreenWidth - 50 - 2 * 15, 49)];
                 
         contentLabel.font = [UIFont systemFontOfSize:14];
         

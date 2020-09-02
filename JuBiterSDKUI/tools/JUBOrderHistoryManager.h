@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)defaultManager;
 
 /// 获取历史记录
-- (NSArray<NSString *> *)findHistory;
+- (NSMutableArray<NSString *> *)findHistory;
 
 /// 保存历史记录
 /// @param historys 历史记录

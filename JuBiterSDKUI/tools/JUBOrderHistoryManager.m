@@ -67,7 +67,14 @@ static JUBOrderHistoryManager *_instance;
 }
 
 - (NSMutableArray<NSString *> *)findHistory {
-    return [self.historys mutableCopy];
+    
+    if (self.historys) {
+        return [self.historys mutableCopy];
+    } else {
+        return [NSMutableArray array];
+    }
+    
+    
 }
 
 @end
