@@ -66,9 +66,9 @@
         });
     }];
     
-    self.okAction = okAction;
+//    self.okAction = okAction;
     
-    okAction.enabled = NO;
+//    okAction.enabled = NO;
     
     [alertController addAction:okAction];
     
@@ -101,12 +101,12 @@
         textField.text = [textField.text substringToIndex:textField.text.length - 1];
     }
         
-    if (textField.text.length > 0) {
-        self.okAction.enabled = YES;
-    }
-    else {
-        self.okAction.enabled = NO;
-    }
+//    if (textField.text.length > 0) {
+//        self.okAction.enabled = YES;
+//    }
+//    else {
+//        self.okAction.enabled = NO;
+//    }
 }
 
 #pragma mark - getter和setter

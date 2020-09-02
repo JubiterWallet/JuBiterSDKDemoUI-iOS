@@ -10,8 +10,6 @@
 @interface JUBInputOrderBaseController ()<UITextViewDelegate>
 
 @property (nonatomic, weak, readonly) JUBMainView *transmissionView;
-@property (nonatomic, weak) UIButton *disConnectBLEButton;
-@property (nonatomic, weak) UIButton *scanBLEButton;
 
 @property (nonatomic, weak) UITextView *apduTextView;
 
@@ -145,19 +143,6 @@
     
 }
 
-
-- (void)setShowBLEButton:(BOOL)showBLEButton {
-        
-    if (showBLEButton) {
-        self.scanBLEButton.hidden = YES;
-        self.disConnectBLEButton.hidden = YES;
-    }
-    else {
-        self.scanBLEButton.hidden = NO;
-        self.disConnectBLEButton.hidden = NO;
-    }
-}
-
 - (void)setApduContent:(NSString *)apduContent {
     
     _apduContent = apduContent;
@@ -174,78 +159,6 @@
 - (void)addMsgData:(NSString *)msgData {
     
     [self.transmissionView addMsgData:msgData];
-}
-
-
-- (void)setNAVBtn {
-    
-    UIButton *scanBLEButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    [scanBLEButton setTitle:@"Scan BLE" forState:UIControlStateNormal];
-    
-    scanBLEButton.hidden = YES;
-    
-    [scanBLEButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
-    
-    [scanBLEButton addTarget:self action:@selector(scanBLEButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.scanBLEButton = scanBLEButton;
-    
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:scanBLEButton];
-    
-    leftItem.imageInsets = UIEdgeInsetsMake(0, 15,0, 0);//设置向左偏移
-    
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
-    UIButton *disConnectBLEButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    [disConnectBLEButton setTitle:@"Off BLE" forState:UIControlStateNormal];
-    
-    disConnectBLEButton.hidden = YES;
-    
-    [disConnectBLEButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
-    
-    [disConnectBLEButton addTarget:self action:@selector(disConnectBLEButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.disConnectBLEButton = disConnectBLEButton;
-    
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:disConnectBLEButton];
-    
-    rightItem.imageInsets = UIEdgeInsetsMake(0, -15,0, 0);//设置向左偏移
-    
-    self.navigationItem.rightBarButtonItem = rightItem;
-}
-
-- (void)scanBLEButtonClick {
-    
-    NSLog(@"scanBLEButtonClick");
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self scanBLEButtonClicked];
-    });
-    
-}
-
-- (void)scanBLEButtonClicked {
-    
-    NSLog(@"scanBLEButtonClicked");
-    
-}
-
-- (void)disConnectBLEButtonClick {
-    
-    NSLog(@"disConnectBLEButtonClick");
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self disConnectBLEButtonClicked];
-    });
-    
-}
-
-- (void)disConnectBLEButtonClicked {
-    
-    NSLog(@"disConnectBLEButtonClicked");
-    
 }
 
 @end

@@ -17,8 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) NSInteger selectedTransmitTypeIndex;
 
-@property (nonatomic, assign) BOOL showBLEButton;
-
 @property (nonatomic, copy) NSString *apduContent;
 
 - (void)addMsgData:(NSString *)msgData;
