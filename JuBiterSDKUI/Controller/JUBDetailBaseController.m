@@ -46,7 +46,7 @@
 
 - (void)baseInitData {
     
-    _selectCoinTypeIndex = 0;
+    _selectedMenuIndex = 0;
     
 }
 
@@ -58,7 +58,7 @@
     
     self.title = @"JuBiter SDK Demo";
     
-    if (self.coinTypeArray.count != 0) {
+    if (self.subMenu.count != 0) {
         
         [self.view addSubview:self.selectedIconTypeButton];
     }
@@ -154,7 +154,7 @@
 
 - (UIButton *)selectedIconTypeButton {
     
-    if (!_selectedIconTypeButton && self.coinTypeArray.count != 0) {
+    if (!_selectedIconTypeButton && self.subMenu.count != 0) {
         
         CGFloat buttonWidth = KScreenWidth - 2 * 15;
         
@@ -166,7 +166,7 @@
                 
         [selectedIconTypeButton addTarget:self action:@selector(showPickerView) forControlEvents:UIControlEventTouchUpInside];
         
-        [selectedIconTypeButton setTitle:self.coinTypeArray[_selectCoinTypeIndex] forState:UIControlStateNormal];
+        [selectedIconTypeButton setTitle:self.subMenu[_selectedMenuIndex] forState:UIControlStateNormal];
         
         [selectedIconTypeButton setTitleColor:[UIColor colorWithRed:0x00/255.0 green:0xcc/255.0 blue:0xff/255.0 alpha:1] forState:UIControlStateNormal];
         
@@ -308,24 +308,24 @@
     
     NSLog(@"ok");
     
-    NSLog(@"self.selectCoinTypeIndex = %ld", (long)self.selectCoinTypeIndex);
+    NSLog(@"self.selectedMenuIndex = %ld", (long)self.selectedMenuIndex);
     
     [self hidenPickerView];
     
-    [self.selectedIconTypeButton setTitle:self.coinTypeArray[self.selectCoinTypeIndex] forState:UIControlStateNormal];
+    [self.selectedIconTypeButton setTitle:self.subMenu[self.selectedMenuIndex] forState:UIControlStateNormal];
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        [self selectCoinType];
+        [self selectSubMenu];
         
     });
     
 }
 
 
-- (void)selectCoinType {
+- (void)selectSubMenu {
     
-    NSLog(@"JUBDetailBaseController--selectCoinTypeIndex");
+    NSLog(@"JUBDetailBaseController--selectedMenuIndex");
 }
 
 
@@ -341,20 +341,20 @@
 //设置指定列包含的项数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     
-    return self.coinTypeArray.count;
+    return self.subMenu.count;
 }
 
 //设置每个选项显示的内容
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     
-    return self.coinTypeArray[row];
+    return self.subMenu[row];
 }
 
 
 //用户进行选择
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    _selectCoinTypeIndex = row;
+    _selectedMenuIndex = row;
 }
 
 

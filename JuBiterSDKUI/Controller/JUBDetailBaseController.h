@@ -16,11 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray<JUBButtonModel *> *buttonArray;
 
-@property (nonatomic, strong) NSArray *coinTypeArray;
+@property (nonatomic, strong) NSArray *subMenu;
 
 @property (nonatomic, assign) NSInteger selectedTransmitTypeIndex;
 
-@property (nonatomic, assign) NSInteger selectCoinTypeIndex;
+@property (nonatomic, assign) NSInteger selectedMenuIndex;
 
 //此值为非空值时导航栏右边的按钮将会显示该值，并且点击可以切换单位
 @property (nonatomic, copy) NSString *navRightButtonTitle;
