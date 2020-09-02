@@ -29,11 +29,13 @@
 #import "JUBDetailBaseController.h"
 #import "JUBListBaseController.h"
 #import "JUBFingerManagerBaseController.h"
+#import "JUBInputOrderBaseController.h"
 
 //tool
 #import "Tools.h"
 #import "JUBAction.h"
 #import "FTConstant.h"
+#import "JUBOrderHistoryManager.h"
 
 
 //! Project version number for JuBiterSDKUI.

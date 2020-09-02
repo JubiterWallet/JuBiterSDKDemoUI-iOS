@@ -45,6 +45,10 @@
 		6886C66524F5557700165048 /* JUBInputAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886C66324F5557700165048 /* JUBInputAlert.m */; };
 		6886C67224F7D54000165048 /* JUBAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 6886C67024F7D54000165048 /* JUBAction.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6886C67324F7D54000165048 /* JUBAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 6886C67124F7D54000165048 /* JUBAction.m */; };
+		68B814A824FE513E00FEBBB9 /* JUBInputOrderBaseController.h in Headers */ = {isa = PBXBuildFile; fileRef = 68B814A624FE513E00FEBBB9 /* JUBInputOrderBaseController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68B814A924FE513E00FEBBB9 /* JUBInputOrderBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B814A724FE513E00FEBBB9 /* JUBInputOrderBaseController.m */; };
+		68B814AF24FF28A900FEBBB9 /* JUBOrderHistoryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 68B814AD24FF28A900FEBBB9 /* JUBOrderHistoryManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68B814B024FF28A900FEBBB9 /* JUBOrderHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B814AE24FF28A900FEBBB9 /* JUBOrderHistoryManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +92,10 @@
 		6886C66324F5557700165048 /* JUBInputAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JUBInputAlert.m; sourceTree = "<group>"; };
 		6886C67024F7D54000165048 /* JUBAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JUBAction.h; sourceTree = "<group>"; };
 		6886C67124F7D54000165048 /* JUBAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JUBAction.m; sourceTree = "<group>"; };
+		68B814A624FE513E00FEBBB9 /* JUBInputOrderBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JUBInputOrderBaseController.h; sourceTree = "<group>"; };
+		68B814A724FE513E00FEBBB9 /* JUBInputOrderBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBInputOrderBaseController.m; sourceTree = "<group>"; };
+		68B814AD24FF28A900FEBBB9 /* JUBOrderHistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JUBOrderHistoryManager.h; sourceTree = "<group>"; };
+		68B814AE24FF28A900FEBBB9 /* JUBOrderHistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JUBOrderHistoryManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +181,8 @@
 		685EA0EF24ED40440034809F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				68B814A624FE513E00FEBBB9 /* JUBInputOrderBaseController.h */,
+				68B814A724FE513E00FEBBB9 /* JUBInputOrderBaseController.m */,
 				685EA10D24ED4C960034809F /* JUBDetailBaseController.h */,
 				685EA11124ED4C960034809F /* JUBDetailBaseController.m */,
 				685EA10E24ED4C960034809F /* JUBListBaseController.h */,
@@ -191,6 +201,8 @@
 				685EA15324ED4DA70034809F /* FTConstant.h */,
 				6886C67024F7D54000165048 /* JUBAction.h */,
 				6886C67124F7D54000165048 /* JUBAction.m */,
+				68B814AD24FF28A900FEBBB9 /* JUBOrderHistoryManager.h */,
+				68B814AE24FF28A900FEBBB9 /* JUBOrderHistoryManager.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -211,11 +223,13 @@
 				685EA13924ED4CA80034809F /* JUBMainView.h in Headers */,
 				6886C67224F7D54000165048 /* JUBAction.h in Headers */,
 				685EA14924ED4CA80034809F /* JUBListCell.h in Headers */,
+				68B814AF24FF28A900FEBBB9 /* JUBOrderHistoryManager.h in Headers */,
 				685EA14124ED4CA80034809F /* JUBAlertView.h in Headers */,
 				685EA14E24ED4CA80034809F /* FTResultDataCell.h in Headers */,
 				6886C66424F5557700165048 /* JUBInputAlert.h in Headers */,
 				685EA11E24ED4C9F0034809F /* JUBButtonModel.h in Headers */,
 				685EA11F24ED4C9F0034809F /* FTResultDataModel.h in Headers */,
+				68B814A824FE513E00FEBBB9 /* JUBInputOrderBaseController.h in Headers */,
 				685EA11524ED4C960034809F /* JUBFingerManagerBaseController.h in Headers */,
 				685EA11424ED4C960034809F /* JUBListBaseController.h in Headers */,
 				685EA11324ED4C960034809F /* JUBDetailBaseController.h in Headers */,
@@ -298,6 +312,7 @@
 				685EA14624ED4CA80034809F /* JUBFingerEntryAlert.m in Sources */,
 				685EA13824ED4CA80034809F /* JUBListCell.m in Sources */,
 				685EA11D24ED4C9F0034809F /* FTResultDataModel.m in Sources */,
+				68B814B024FF28A900FEBBB9 /* JUBOrderHistoryManager.m in Sources */,
 				685EA14A24ED4CA80034809F /* JUBMainView.mm in Sources */,
 				685EA14724ED4CA80034809F /* JUBListAlert.m in Sources */,
 				685EA15424ED4DA70034809F /* Tools.m in Sources */,
@@ -307,6 +322,7 @@
 				685EA11224ED4C960034809F /* JUBFingerManagerBaseController.m in Sources */,
 				685EA0F224ED42FB0034809F /* JUBWarningAlert.m in Sources */,
 				685EA13E24ED4CA80034809F /* JUBInputAddressView.m in Sources */,
+				68B814A924FE513E00FEBBB9 /* JUBInputOrderBaseController.m in Sources */,
 				685EA11624ED4C960034809F /* JUBListBaseController.m in Sources */,
 				685EA14D24ED4CA80034809F /* JUBPinAlertView.m in Sources */,
 				685EA11C24ED4C9F0034809F /* JUBButtonModel.m in Sources */,

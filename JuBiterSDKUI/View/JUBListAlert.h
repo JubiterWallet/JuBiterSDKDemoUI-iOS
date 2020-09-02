@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^JUBSelectCellCallBackBlock)(NSString * _Nullable selectedItem);
 
+typedef void (^JUBDeleteCellCallBackBlock)(NSString * _Nullable deletedItem);
+
 @interface JUBListAlert : UIView
 
 + (JUBListAlert *)showCallBack:(JUBSelectCellCallBackBlock)selectCellCallBackBlock;
@@ -29,6 +31,8 @@ typedef void (^JUBSelectCellCallBackBlock)(NSString * _Nullable selectedItem);
 
 //批量移除内容
 - (void)removeAllItems;
+
+@property (nonatomic, assign) JUBDeleteCellCallBackBlock deleteCellCallBackBlock;
 
 @end
 

@@ -72,7 +72,7 @@
     mainView.layer.masksToBounds = YES;
     
     [self addSubview:mainView];
-    
+        
     return mainView;
     
 }
@@ -260,6 +260,43 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.content = _itemsArray[indexPath.row];
     
     return  cell;
+}
+
+#pragma mark - cell删除逻辑
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+ 
+// 定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+ 
+// 进入编辑模式，按下出现的编辑按钮后,进行删除操作
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSString *deletedItem = self.itemsArray[indexPath.row];
+                
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            if (self.deleteCellCallBackBlock) {
+                self.deleteCellCallBackBlock(deletedItem);
+            }
+            
+        });
+        
+        [self cancel];
+        
+    }
+    
+}
+ 
+// 修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
 }
 
 #pragma mark - UITableViewDelegate

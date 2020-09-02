@@ -28,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationController.navigationBar.translucent = NO;
+    
     [self baseInitData];
     
     [self baseInitUI];
@@ -65,7 +67,7 @@
     
     CGFloat startY = self.selectedIconTypeButton ? CGRectGetMaxY(self.selectedIconTypeButton.frame) + 10 : 0;
     
-    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, CGRectGetHeight(self.view.frame) - startY) buttonArray:self.buttonArray];
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, startY, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - startY) buttonArray:self.buttonArray];
     
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
         

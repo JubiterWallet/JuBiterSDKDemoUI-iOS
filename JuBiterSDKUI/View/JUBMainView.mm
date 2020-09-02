@@ -15,16 +15,12 @@
 
 static JUBMainView *selfClass =nil;
 
-//static NSArray<JUBButtonModel *> *buttonArray;
-
 API_AVAILABLE(ios(13.0))
 @interface JUBMainView ()<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property (nonatomic, weak) UITableView *msgTableView;
 
 @property (nonatomic, strong) NSMutableArray<FTResultDataModel *> *msgData;
-
-@property (nonatomic, weak) UIView *line;
 
 @end
 
@@ -33,6 +29,8 @@ API_AVAILABLE(ios(13.0))
 + (JUBMainView *)coinTestMainViewWithFrame:(CGRect)frame buttonArray:(nullable NSArray<JUBButtonModel *> *)btnArray {
         
     JUBMainView *coinTestMainView = [[self alloc] initWithFrame:frame];
+    
+    coinTestMainView.backgroundColor = [UIColor greenColor];
     
     coinTestMainView.buttonArray = btnArray;
     
@@ -93,58 +91,70 @@ API_AVAILABLE(ios(13.0))
     UIScrollView *scrollView = [self viewWithTag:100];
     
     [scrollView removeFromSuperview];
-            
-    {
-        scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(self.frame)/2)];
-        
-        scrollView.tag = 100;
-            
-        [self addSubview:scrollView];
-    }
     
-    CGFloat edge = 20;
+    if (self.buttonArray.count != 0) {
+        
+        {
+            scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, CGRectGetHeight(self.frame)/2)];
+            
+            scrollView.tag = 100;
                 
-    UIButton *button;
-    
-    {
-            
-        CGFloat buttonStartY = 20;
-            
-        CGFloat buttonSpace = 15;
+            [self addSubview:scrollView];
+        }
         
-        CGFloat buttonWidth = KScreenWidth - 2 * edge;
-        
-        CGFloat buttonHeight = 50;
-        
-        NSString *transmitTypeIndexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
-                        
-        button = nil;
-        
-        for (NSInteger index = 0; index < [self.buttonArray count]; index++) {
-            
-            JUBButtonModel *buttonModel = self.buttonArray[index];
-            
-            button = [[UIButton alloc] initWithFrame:CGRectMake(edge, button ? CGRectGetMaxY(button.frame) + buttonSpace : buttonStartY, buttonWidth, buttonHeight)];
-            
-            button.tag = index;
-            
-            [button addTarget:self action:@selector(selectCoinSeries:) forControlEvents:UIControlEventTouchUpInside];
+        CGFloat edge = 20;
                     
-            [button setTitle:buttonModel.title forState:UIControlStateNormal];
-            
-            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            
-            [button setBackgroundColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"]];
-            
-            button.layer.cornerRadius = 4;
-            
-            button.layer.masksToBounds = YES;
-            
-            [scrollView addSubview:button];
-            
-            if (buttonModel.transmitTypeOfButton) {
+        UIButton *button;
+        
+        {
                 
-                if (![buttonModel.transmitTypeOfButton containsString:transmitTypeIndexStr ? transmitTypeIndexStr : @"0"]) {
+            CGFloat buttonStartY = 20;
+                
+            CGFloat buttonSpace = 15;
+            
+            CGFloat buttonWidth = KScreenWidth - 2 * edge;
+            
+            CGFloat buttonHeight = 50;
+            
+            NSString *transmitTypeIndexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
+                            
+            button = nil;
+            
+            for (NSInteger index = 0; index < [self.buttonArray count]; index++) {
+                
+                JUBButtonModel *buttonModel = self.buttonArray[index];
+                
+                button = [[UIButton alloc] initWithFrame:CGRectMake(edge, button ? CGRectGetMaxY(button.frame) + buttonSpace : buttonStartY, buttonWidth, buttonHeight)];
+                
+                button.tag = index;
+                
+                [button addTarget:self action:@selector(selectCoinSeries:) forControlEvents:UIControlEventTouchUpInside];
+                        
+                [button setTitle:buttonModel.title forState:UIControlStateNormal];
+                
+                [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                
+                [button setBackgroundColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"]];
+                
+                button.layer.cornerRadius = 4;
+                
+                button.layer.masksToBounds = YES;
+                
+                [scrollView addSubview:button];
+                
+                if (buttonModel.transmitTypeOfButton) {
+                    
+                    if (![buttonModel.transmitTypeOfButton containsString:transmitTypeIndexStr ? transmitTypeIndexStr : @"0"]) {
+                        
+                        button.userInteractionEnabled = NO;
+                        
+                        [button setBackgroundColor:[UIColor lightGrayColor]];
+                        
+                    }
+                    
+                }
+                
+                if (buttonModel.disEnable) {
                     
                     button.userInteractionEnabled = NO;
                     
@@ -153,63 +163,66 @@ API_AVAILABLE(ios(13.0))
                 }
                 
             }
-            
-            if (buttonModel.disEnable) {
-                
-                button.userInteractionEnabled = NO;
-                
-                [button setBackgroundColor:[UIColor lightGrayColor]];
-                
-            }
-            
         }
-    }
+            
+        scrollView.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(button.frame) + 20);
         
-    scrollView.contentSize = CGSizeMake(KScreenWidth, CGRectGetMaxY(button.frame) + 20);
-
-    [self.line removeFromSuperview];
+        if (scrollView.contentSize.height < CGRectGetHeight(scrollView.frame)) {
+            scrollView.frame = CGRectMake(CGRectGetMinX(scrollView.frame), CGRectGetMinY(scrollView.frame), KScreenWidth, scrollView.contentSize.height);
+        }
+        
+    }
+     
+    //**************************************
+    UIView *line = [self viewWithTag:90];
     
-    UIView *line;
-    
+    [line removeFromSuperview];
+        
     if (self.buttonArray.count > 0) {
-        line = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame)/2, KScreenWidth, 1)];
+        line = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(scrollView.frame), KScreenWidth, 1)];
     } else {
         line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 1)];
     }
     
-    self.line = line;
+    line.tag = 90;
     
     line.backgroundColor = [[Tools defaultTools] colorWithHexString: @"#008792"];
     
     [self addSubview:line];
+
 }
 
 - (void)setButtonArray:(NSArray<JUBButtonModel *> *)buttonArray {
     
     _buttonArray = buttonArray;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+   dispatch_async(dispatch_get_main_queue(), ^{
         
         //刷新界面
         [self initOrderUI];
+       
+        [self initResultDataUI];
         
     });
-    
     
 }
 
 //初始化界面下部的返回结果UI
 - (void)initResultDataUI {
     
-    UIView *line = self.line;
+    UIView *line = [self viewWithTag:90];
     
-    UITableView *msgTableView;
+    UITableView *msgTableView = [self viewWithTag:80];
     
-    if (self.buttonArray.count > 0) {
-        msgTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), KScreenWidth, CGRectGetHeight(self.frame)/2) style:UITableViewStylePlain];
-    } else {
-        msgTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), KScreenWidth, CGRectGetHeight(self.frame)) style:UITableViewStylePlain];
-    }
+    [msgTableView removeFromSuperview];
+    
+    msgTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), KScreenWidth, CGRectGetHeight(self.frame) - CGRectGetMaxY(line.frame)) style:UITableViewStylePlain];
+    
+//    if (self.buttonArray.count > 0) {
+//        msgTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), KScreenWidth, CGRectGetHeight(self.frame) - CGRectGetMaxY(line.frame)) style:UITableViewStylePlain];
+//    } else {
+//        msgTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(line.frame), KScreenWidth, CGRectGetHeight(self.frame)) style:UITableViewStylePlain];
+//    }
     
     msgTableView.showsVerticalScrollIndicator = NO;
     
@@ -218,10 +231,10 @@ API_AVAILABLE(ios(13.0))
     msgTableView.dataSource = self;
     
     msgTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [msgTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenHeight, 64)]];
-    
+        
     msgTableView.backgroundColor = [[Tools defaultTools] colorWithHexString:@"#ffffff"];
+    
+    msgTableView.tag = 80;
     
     self.msgTableView = msgTableView;
     

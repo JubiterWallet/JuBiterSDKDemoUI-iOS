@@ -1,24 +1,24 @@
 //
-//  JUBListBaseController.m
+//  JUBInputOrderBaseController.m
 //  JuBiterSDKDemo
 //
 //  Created by 张川 on 2020/4/28.
 //  Copyright © 2020 JuBiter. All rights reserved.
-//  首页的基类，用户应该继承本类，去实现自己的业务逻辑
 
-#import "JUBListBaseController.h"
-#import "JUBDetailBaseController.h"
+#import "JUBInputOrderBaseController.h"
 
-@interface JUBListBaseController ()
+@interface JUBInputOrderBaseController ()<UITextViewDelegate>
 
 @property (nonatomic, weak, readonly) JUBMainView *transmissionView;
 @property (nonatomic, weak) UIButton *disConnectBLEButton;
 @property (nonatomic, weak) UIButton *scanBLEButton;
 
+@property (nonatomic, weak) UITextView *apduTextView;
+
 @end
 
 
-@implementation JUBListBaseController
+@implementation JUBInputOrderBaseController
 
 - (void)viewDidLoad {
     
@@ -26,7 +26,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.translucent = NO;
-        
+            
     [self baseInitData];
 
     [self baseInitUI];
@@ -41,12 +41,7 @@
 
 
 - (void)baseInitData {
-    
-    NSString *indexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
-    
-    if (!indexStr) {
-        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:selectedTransmitTypeIndexStr];
-    }
+
 }
 
 
@@ -56,46 +51,17 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"JuBiter SDK Demo";
+        
+    [self initOrderUI];
     
-    [self setNAVBtn];
+    __weak JUBInputOrderBaseController *weakSelf = self;
     
-    UISegmentedControl *TransmitSegment;
-    
-    {
-        NSArray *array = [self getTransmitTypeArray];
+    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(self.apduTextView.frame) + 10, KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - CGRectGetHeight(self.apduTextView.frame) - 10) buttonArray:self.buttonArray];
         
-        TransmitSegment = [[UISegmentedControl alloc] initWithItems:array];
-        
-        [TransmitSegment setFrame:CGRectMake(15, 20, KScreenWidth - 2 * 15, 40)];
-        
-        NSString *indexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
-        
-        NSLog(@"segmentAction indexStr = %@", indexStr);
-        
-        if (indexStr.length > 0) {
-            [TransmitSegment setSelectedSegmentIndex:[indexStr integerValue]];
-        }
-        else {
-            [TransmitSegment setSelectedSegmentIndex:0];
-        }
-        
-        [TransmitSegment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
-        
-        TransmitSegment.tintColor = [UIColor whiteColor];
-        
-        [self.view addSubview:TransmitSegment];
-    }
-    
-    __weak JUBListBaseController *weakSelf = self;
-    
-    NSLog(@"self.view.frame = %f", CGRectGetHeight(self.view.frame));
-    
-    JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(TransmitSegment.frame), KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - CGRectGetMaxY(TransmitSegment.frame)) buttonArray:self.buttonArray];
-    
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
-        NSLog(@"coinSeriesType = %ld", (long)index);
         
         [weakSelf gotoDetailAccordingCoinSeriesType:index];
+        
     }];
     
     _transmissionView = view;
@@ -103,62 +69,56 @@
     [self.view addSubview:view];
 }
 
-
-//- (NSArray *)getButtonModelArray {
-//
-//    NSArray *buttonTitleArray = [self getButtonTitleArray];
-//
-//    NSMutableArray *buttonModelArray = [NSMutableArray array];
-//
-//    for (NSString *title in buttonTitleArray) {
-//
-//        JUBButtonModel *model = [[JUBButtonModel alloc] init];
-//
-//        model.title = title;
-//
-//        [buttonModelArray addObject:model];
-//    }
-//
-//    return buttonModelArray;
-//}
-
-
-#pragma mark - 页面内部按钮回调方法
-- (void)segmentAction:(UISegmentedControl *)seg {
+- (void)textViewDidChange:(UITextView *)textView {
     
-    NSInteger index = [seg selectedSegmentIndex];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%ld", (long)index] forKey:selectedTransmitTypeIndexStr];
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    [self selectTransmitTypeIndex:index];
-    
-    NSLog(@"segmentAction index = %ld", (long)index);
+    self.apduContent = textView.text;
+        
+    NSRange selection = textView.selectedRange;
+    if (selection.location + selection.length == [textView.text length]) {
+        CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.start];
+        CGFloat overflow = caretRect.origin.y + caretRect.size.height - (textView.contentOffset.y + textView.bounds.size.height - textView.contentInset.bottom - textView.contentInset.top);
+        
+        if (overflow > 0.0f) {
+            CGPoint offset = textView.contentOffset;
+            offset.y += overflow + 7.0f;
+            [UIView animateWithDuration:0.2f animations:^{
+            [textView setContentOffset:offset];
+            }];
+        }
+    } else {
+        [textView scrollRangeToVisible:selection];
+    }
 }
 
+//初始化界面上部的指令UI
+- (void)initOrderUI {
+            
+    NSString *apduTextViewText = self.apduTextView ? self.apduTextView.text : @"";
+    
+    CGFloat edge = 20;
+        
+    {
+        UITextView *apduTextView = [[UITextView alloc] initWithFrame:CGRectMake(edge, 10, KScreenWidth - 2 * edge, 140)];
+        
+        apduTextView.text = apduTextViewText;
+        
+        apduTextView.font = [UIFont systemFontOfSize:15];
+        
+        apduTextView.delegate = self;
+        
+        apduTextView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 15.0, 0.0);
+                                
+        [self.view addSubview:apduTextView];
+        
+        apduTextView.layer.borderColor = [[Tools defaultTools] colorWithHexString:@"#e0e0e0"].CGColor;
+        
+        apduTextView.layer.borderWidth = 1;
 
-#pragma mark - 懒加载
-- (NSInteger)selectedTransmitTypeIndex {
-    
-    NSString *indexStr = [[NSUserDefaults standardUserDefaults] objectForKey:selectedTransmitTypeIndexStr];
-    
-    return [indexStr integerValue];
+        self.apduTextView = apduTextView;
+                
+    }
+
 }
-
-
-#pragma mark - 获取界面所需要的数据，子类如果想设置数据，则可以重写此类方法
-- (NSArray *)getTransmitTypeArray {
-    
-    return @[@"1", @"2", @"3"];
-}
-
-
-- (NSArray *)getButtonTitleArray {
-    
-    return @[@"1", @"2", @"3", @"4", @"5", @"6"];
-}
-
 
 #pragma mark - 页面按钮点击回调方法，子类如果想接受回调可以重写此类方法
 - (void)gotoDetailAccordingCoinSeriesType:(NSInteger)coinSeriesType {
@@ -178,6 +138,31 @@
     if (self.transmissionView) {
         self.transmissionView.buttonArray = buttonArray;
     }
+    
+}
+
+
+- (void)setShowBLEButton:(BOOL)showBLEButton {
+        
+    if (showBLEButton) {
+        self.scanBLEButton.hidden = YES;
+        self.disConnectBLEButton.hidden = YES;
+    }
+    else {
+        self.scanBLEButton.hidden = NO;
+        self.disConnectBLEButton.hidden = NO;
+    }
+}
+
+- (void)setApduContent:(NSString *)apduContent {
+    
+    _apduContent = apduContent;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.apduTextView.text = apduContent;
+        
+    });
     
 }
 
@@ -225,21 +210,6 @@
     rightItem.imageInsets = UIEdgeInsetsMake(0, -15,0, 0);//设置向左偏移
     
     self.navigationItem.rightBarButtonItem = rightItem;
-}
-
-
-- (void)setShowBLEButton:(BOOL)showBLEButton {
-    
-    _showBLEButton = showBLEButton;
-    
-    if (showBLEButton) {
-        self.disConnectBLEButton.hidden = NO;
-        self.scanBLEButton.hidden = NO;
-    }
-    else {
-        self.disConnectBLEButton.hidden = YES;
-        self.scanBLEButton.hidden = YES;
-    }
 }
 
 - (void)scanBLEButtonClick {
