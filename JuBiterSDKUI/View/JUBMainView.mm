@@ -29,9 +29,7 @@ API_AVAILABLE(ios(13.0))
 + (JUBMainView *)coinTestMainViewWithFrame:(CGRect)frame buttonArray:(nullable NSArray<JUBButtonModel *> *)btnArray {
         
     JUBMainView *coinTestMainView = [[self alloc] initWithFrame:frame];
-    
-    coinTestMainView.backgroundColor = [UIColor greenColor];
-    
+        
     coinTestMainView.buttonArray = btnArray;
     
     [coinTestMainView initData];
@@ -198,10 +196,8 @@ API_AVAILABLE(ios(13.0))
     
    dispatch_async(dispatch_get_main_queue(), ^{
         
-        //刷新界面
-        [self initOrderUI];
-       
-        [self initResultDataUI];
+       //刷新界面
+       [self initUI];
         
     });
     
@@ -244,7 +240,13 @@ API_AVAILABLE(ios(13.0))
 
 - (void)initClearAllButton {
     
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth - 100, CGRectGetHeight(self.frame) - 100, 80, 50)];
+    UIButton *button = [self viewWithTag:200];
+    
+    [button removeFromSuperview];
+        
+    button = [[UIButton alloc] initWithFrame:CGRectMake(KScreenWidth - 100, CGRectGetHeight(self.frame) - 100, 80, 50)];
+    
+    button.tag = 200;
     
     [button addTarget:self action:@selector(clearAll) forControlEvents:UIControlEventTouchUpInside];
             
