@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL showBLEButton;
 
+@property (nonatomic, copy) NSString *leftNAVButtonTitle;
+
+@property (nonatomic, copy) NSString *rightNAVButtonTitle;
+
 - (void)addMsgData:(NSString *)msgData;
 
 @end

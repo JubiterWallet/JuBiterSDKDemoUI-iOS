@@ -115,7 +115,7 @@
         
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
         
-        [weakSelf gotoDetailAccordingCoinSeriesType:index];
+        [weakSelf doActionAccordingOption:index];
         
     }];
     
@@ -125,7 +125,7 @@
 }
 
 #pragma mark - 页面按钮点击回调方法，子类如果想接受回调可以重写此类方法
-- (void)gotoDetailAccordingCoinSeriesType:(NSInteger)coinSeriesType {
+- (void)doActionAccordingOption:(NSInteger)coinSeriesType {
     
 }
 

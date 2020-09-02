@@ -12,8 +12,8 @@
 @interface JUBListBaseController ()
 
 @property (nonatomic, weak, readonly) JUBMainView *transmissionView;
-@property (nonatomic, weak) UIButton *disConnectBLEButton;
-@property (nonatomic, weak) UIButton *scanBLEButton;
+@property (nonatomic, weak) UIButton *rightNAVButton;
+@property (nonatomic, weak) UIButton *leftNAVButton;
 
 @end
 
@@ -89,13 +89,14 @@
     __weak JUBListBaseController *weakSelf = self;
     
     NSLog(@"self.view.frame = %f", CGRectGetHeight(self.view.frame));
-    
+    // 放在报警告代码的前面,其中`XXXXX`代表的就是第二部步查找的警告类型
+
     JUBMainView *view = [JUBMainView coinTestMainViewWithFrame:CGRectMake(0, CGRectGetMaxY(TransmitSegment.frame), KScreenWidth, KScreenHeight - KStatusBarHeight - KNavigationBarHeight - CGRectGetMaxY(TransmitSegment.frame)) buttonArray:self.buttonArray];
     
     [view setTransmissionViewCallBackBlock:^(NSInteger index) {
         NSLog(@"coinSeriesType = %ld", (long)index);
         
-        [weakSelf gotoDetailAccordingCoinSeriesType:index];
+        [weakSelf doActionAccordingOption:index];
     }];
     
     _transmissionView = view;
@@ -137,6 +138,25 @@
     NSLog(@"segmentAction index = %ld", (long)index);
 }
 
+- (void)leftNAVButtonClick {
+    
+    NSLog(@"leftNAVButtonClick");
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self leftNAVButtonClicked];
+    });
+    
+}
+
+- (void)rightNAVButtonClick {
+    
+    NSLog(@"rightNAVButtonClick");
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self rightNAVButtonClicked];
+    });
+    
+}
 
 #pragma mark - 懒加载
 - (NSInteger)selectedTransmitTypeIndex {
@@ -161,7 +181,7 @@
 
 
 #pragma mark - 页面按钮点击回调方法，子类如果想接受回调可以重写此类方法
-- (void)gotoDetailAccordingCoinSeriesType:(NSInteger)coinSeriesType {
+- (void)doActionAccordingOption:(NSInteger)coinSeriesType {
     
 }
 
@@ -181,6 +201,22 @@
     
 }
 
+- (void)setLeftNAVButtonTitle:(NSString *)leftNAVButtonTitle {
+    
+    _leftNAVButtonTitle = leftNAVButtonTitle;
+    
+    [self.leftNAVButton setTitle:leftNAVButtonTitle forState:UIControlStateNormal];
+    
+}
+
+- (void)setRightNAVButtonTitle:(NSString *)rightNAVButtonTitle {
+    
+    _rightNAVButtonTitle = rightNAVButtonTitle;
+    
+    [self.rightNAVButton setTitle:rightNAVButtonTitle forState:UIControlStateNormal];
+    
+}
+
 #pragma mark - 外部调用方法
 - (void)addMsgData:(NSString *)msgData {
     
@@ -190,37 +226,37 @@
 
 - (void)setNAVBtn {
     
-    UIButton *scanBLEButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *leftNAVButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [scanBLEButton setTitle:@"Scan BLE" forState:UIControlStateNormal];
+    [leftNAVButton setTitle:@"leftNAVButton" forState:UIControlStateNormal];
     
-    scanBLEButton.hidden = YES;
+    leftNAVButton.hidden = YES;
     
-    [scanBLEButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
+    [leftNAVButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
     
-    [scanBLEButton addTarget:self action:@selector(scanBLEButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [leftNAVButton addTarget:self action:@selector(leftNAVButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    self.scanBLEButton = scanBLEButton;
+    self.leftNAVButton = leftNAVButton;
     
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:scanBLEButton];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftNAVButton];
     
     leftItem.imageInsets = UIEdgeInsetsMake(0, 15,0, 0);//设置向左偏移
     
     self.navigationItem.leftBarButtonItem = leftItem;
     
-    UIButton *disConnectBLEButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *rightNAVButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [disConnectBLEButton setTitle:@"Off BLE" forState:UIControlStateNormal];
+    [rightNAVButton setTitle:@"rightNAVButton" forState:UIControlStateNormal];
     
-    disConnectBLEButton.hidden = YES;
+    rightNAVButton.hidden = YES;
     
-    [disConnectBLEButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
+    [rightNAVButton setTitleColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"] forState:UIControlStateNormal];
     
-    [disConnectBLEButton addTarget:self action:@selector(disConnectBLEButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    [rightNAVButton addTarget:self action:@selector(rightNAVButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    self.disConnectBLEButton = disConnectBLEButton;
+    self.rightNAVButton = rightNAVButton;
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:disConnectBLEButton];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightNAVButton];
     
     rightItem.imageInsets = UIEdgeInsetsMake(0, -15,0, 0);//设置向左偏移
     
@@ -233,44 +269,25 @@
     _showBLEButton = showBLEButton;
     
     if (showBLEButton) {
-        self.disConnectBLEButton.hidden = NO;
-        self.scanBLEButton.hidden = NO;
+        self.rightNAVButton.hidden = NO;
+        self.leftNAVButton.hidden = NO;
     }
     else {
-        self.disConnectBLEButton.hidden = YES;
-        self.scanBLEButton.hidden = YES;
+        self.rightNAVButton.hidden = YES;
+        self.leftNAVButton.hidden = YES;
     }
 }
 
-- (void)scanBLEButtonClick {
+#pragma mark - 回调子类方法
+- (void)leftNAVButtonClicked {
     
-    NSLog(@"scanBLEButtonClick");
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self scanBLEButtonClicked];
-    });
+    NSLog(@"leftNAVButtonClicked");
     
 }
 
-- (void)scanBLEButtonClicked {
+- (void)rightNAVButtonClicked {
     
-    NSLog(@"scanBLEButtonClicked");
-    
-}
-
-- (void)disConnectBLEButtonClick {
-    
-    NSLog(@"disConnectBLEButtonClick");
-    
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self disConnectBLEButtonClicked];
-    });
-    
-}
-
-- (void)disConnectBLEButtonClicked {
-    
-    NSLog(@"disConnectBLEButtonClicked");
+    NSLog(@"rightNAVButtonClicked");
     
 }
 
