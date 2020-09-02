@@ -82,11 +82,6 @@
 }
 
 
-- (NSArray *)coinTypeArray {
-    return @[@"1", @"2"];
-}
-
-
 - (void)selectedTestActionTypeIndex:(NSInteger)index {
     
 }
