@@ -82,6 +82,11 @@
 }
 
 
+- (NSArray *)coinTypeArray {
+    return @[@"1", @"2"];
+}
+
+
 - (void)selectedTestActionTypeIndex:(NSInteger)index {
     
 }
@@ -154,7 +159,7 @@
 
 - (UIButton *)selectedIconTypeButton {
     
-    if (!_selectedIconTypeButton && _coinTypeArray.count != 0) {
+    if (!_selectedIconTypeButton && self.coinTypeArray.count != 0) {
         
         CGFloat buttonWidth = KScreenWidth - 2 * 15;
         
@@ -166,7 +171,7 @@
                 
         [selectedIconTypeButton addTarget:self action:@selector(showPickerView) forControlEvents:UIControlEventTouchUpInside];
         
-        [selectedIconTypeButton setTitle:_coinTypeArray[_selectCoinTypeIndex] forState:UIControlStateNormal];
+        [selectedIconTypeButton setTitle:self.coinTypeArray[_selectCoinTypeIndex] forState:UIControlStateNormal];
         
         [selectedIconTypeButton setTitleColor:[UIColor colorWithRed:0x00/255.0 green:0xcc/255.0 blue:0xff/255.0 alpha:1] forState:UIControlStateNormal];
         
