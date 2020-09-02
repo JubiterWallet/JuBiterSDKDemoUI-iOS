@@ -97,7 +97,7 @@
 #pragma mark - textField代理
 - (void)changedInputPinTextField:(UITextField *)textField {
     
-    if (textField.text.length > self.limitLength) {
+    if (self.limitLength > 0 && textField.text.length > self.limitLength) {
         textField.text = [textField.text substringToIndex:textField.text.length - 1];
     }
         
