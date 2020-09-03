@@ -49,6 +49,8 @@
 		68B814A924FE513E00FEBBB9 /* JUBInputOrderBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B814A724FE513E00FEBBB9 /* JUBInputOrderBaseController.m */; };
 		68B814AF24FF28A900FEBBB9 /* JUBOrderHistoryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 68B814AD24FF28A900FEBBB9 /* JUBOrderHistoryManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		68B814B024FF28A900FEBBB9 /* JUBOrderHistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B814AE24FF28A900FEBBB9 /* JUBOrderHistoryManager.m */; };
+		68B814C625007D4100FEBBB9 /* JUBCustomInputAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 68B814C425007D4100FEBBB9 /* JUBCustomInputAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68B814C725007D4100FEBBB9 /* JUBCustomInputAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B814C525007D4100FEBBB9 /* JUBCustomInputAlert.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +98,8 @@
 		68B814A724FE513E00FEBBB9 /* JUBInputOrderBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JUBInputOrderBaseController.m; sourceTree = "<group>"; };
 		68B814AD24FF28A900FEBBB9 /* JUBOrderHistoryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JUBOrderHistoryManager.h; sourceTree = "<group>"; };
 		68B814AE24FF28A900FEBBB9 /* JUBOrderHistoryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JUBOrderHistoryManager.m; sourceTree = "<group>"; };
+		68B814C425007D4100FEBBB9 /* JUBCustomInputAlert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JUBCustomInputAlert.h; sourceTree = "<group>"; };
+		68B814C525007D4100FEBBB9 /* JUBCustomInputAlert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JUBCustomInputAlert.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 				685EA0F024ED42FB0034809F /* JUBWarningAlert.m */,
 				6886C66224F5557700165048 /* JUBInputAlert.h */,
 				6886C66324F5557700165048 /* JUBInputAlert.m */,
+				68B814C425007D4100FEBBB9 /* JUBCustomInputAlert.h */,
+				68B814C525007D4100FEBBB9 /* JUBCustomInputAlert.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -222,6 +228,7 @@
 				685EA14224ED4CA80034809F /* JUBFingerEntryAlert.h in Headers */,
 				685EA13924ED4CA80034809F /* JUBMainView.h in Headers */,
 				6886C67224F7D54000165048 /* JUBAction.h in Headers */,
+				68B814C625007D4100FEBBB9 /* JUBCustomInputAlert.h in Headers */,
 				685EA14924ED4CA80034809F /* JUBListCell.h in Headers */,
 				68B814AF24FF28A900FEBBB9 /* JUBOrderHistoryManager.h in Headers */,
 				685EA14124ED4CA80034809F /* JUBAlertView.h in Headers */,
@@ -307,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B814C725007D4100FEBBB9 /* JUBCustomInputAlert.m in Sources */,
 				6886C66524F5557700165048 /* JUBInputAlert.m in Sources */,
 				685EA13A24ED4CA80034809F /* FTResultDataCell.m in Sources */,
 				685EA14624ED4CA80034809F /* JUBFingerEntryAlert.m in Sources */,

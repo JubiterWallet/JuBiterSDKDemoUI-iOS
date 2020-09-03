@@ -273,7 +273,13 @@
 
 - (void)ok {
     
-    self.getAddressCallBackBlock(self.change, [self.addressTextField.text integerValue]);
+    NSString *address = self.addressTextField.text;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        self.getAddressCallBackBlock(self.change, [address integerValue]);
+        
+    });
     
     [self removeFromSuperview];
     

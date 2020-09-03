@@ -63,7 +63,18 @@
 }
 
 - (void)setContent:(NSString *)content {
+    
+    _content = [content copy];
+    
     self.contentLabel.text = content;
+}
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
+    
+    _textAlignment = textAlignment;
+    
+    self.contentLabel.textAlignment = textAlignment;
+    
 }
 
 #pragma mark - tool

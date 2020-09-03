@@ -259,6 +259,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     cell.content = _itemsArray[indexPath.row];
     
+    cell.textAlignment = self.textAlignment;
+    
     return  cell;
 }
 
@@ -336,6 +338,20 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     }
     
     return _itemsArray;
+    
+}
+
+#pragma mark - setter getter
+
+- (void)setTextAlignment:(NSTextAlignment)textAlignment {
+    
+    _textAlignment = textAlignment;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.listTableView reloadData];
+        
+    });
     
 }
 

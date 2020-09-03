@@ -100,13 +100,7 @@
     if (self.limitLength > 0 && textField.text.length > self.limitLength) {
         textField.text = [textField.text substringToIndex:textField.text.length - 1];
     }
-        
-//    if (textField.text.length > 0) {
-//        self.okAction.enabled = YES;
-//    }
-//    else {
-//        self.okAction.enabled = NO;
-//    }
+    
 }
 
 #pragma mark - getter和setter

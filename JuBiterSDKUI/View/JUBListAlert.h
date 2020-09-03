@@ -20,6 +20,9 @@ typedef void (^JUBDeleteCellCallBackBlock)(NSString * _Nullable deletedItem);
 
 @property (nonatomic, copy) NSString *title;
 
+//NSTextAlignmentLeft  NSTextAlignmentCenter  NSTextAlignmentRight
+@property (nonatomic, assign) NSTextAlignment textAlignment;
+
 //单个添加内容
 - (void)addItem:(NSString *)item;
 
