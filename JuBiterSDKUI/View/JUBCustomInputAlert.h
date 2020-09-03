@@ -22,6 +22,8 @@ typedef void (^JUBInputCallBackBlock)(NSString *content, JUBDissAlertCallBack di
 
 @property (nonatomic, copy) NSString *title;
 
+@property (nonatomic, copy) NSString *message;
+
 @property (nonatomic, copy) NSString *textFieldPlaceholder;
 
 //纯数字键盘 UIKeyboardTypeNumberPad

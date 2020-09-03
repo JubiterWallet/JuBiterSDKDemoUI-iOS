@@ -16,6 +16,8 @@
 
 @property (nonatomic, weak) UILabel *titleLabel;
 
+@property (nonatomic, weak) UILabel *messageLabel;
+
 @property (nonatomic, weak) UITextField *textField;
 
 @property (nonatomic, weak) UILabel *errorMessageLabel;
@@ -83,7 +85,11 @@
     
     self.titleLabel = titleLabel;
     
-    UITextField *textField = [self addTextFieldAboveSuperView:mainView frame:CGRectMake(40, CGRectGetMaxY(titleLabel.frame) + 40, CGRectGetWidth(mainView.frame) - 2 * 40, 30)];
+    UILabel *messageLabel = [self addMessageLabelAboveSuperView:mainView];
+    
+    self.messageLabel = messageLabel;
+    
+    UITextField *textField = [self addTextFieldAboveSuperView:mainView frame:CGRectMake(40, CGRectGetMaxY(messageLabel.frame) + 20, CGRectGetWidth(mainView.frame) - 2 * 40, 30)];
     
     self.textField = textField;
     
@@ -100,9 +106,7 @@
 - (UILabel *)addTitleLabelAboveSuperView:(UIView *)mainView {
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(mainView.frame), 50)];
-    
-    titleLabel.text = @"Please enter a title";
-    
+        
     titleLabel.font = [UIFont systemFontOfSize:16];
     
     titleLabel.textColor = [UIColor whiteColor];
@@ -114,6 +118,22 @@
     [mainView addSubview:titleLabel];
     
     return titleLabel;
+    
+}
+
+- (UILabel *)addMessageLabelAboveSuperView:(UIView *)mainView {
+    
+    UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + 10, CGRectGetWidth(mainView.frame), 20)];
+        
+    messageLabel.font = [UIFont systemFontOfSize:14];
+    
+    messageLabel.textColor = [[Tools defaultTools] colorWithHexString:@"#888888"];
+    
+    messageLabel.textAlignment = NSTextAlignmentCenter;
+        
+    [mainView addSubview:messageLabel];
+    
+    return messageLabel;
     
 }
 
@@ -146,7 +166,7 @@
     
     UILabel *errorMessageLabel = [[UILabel alloc] initWithFrame:frame];
         
-    errorMessageLabel.font = [UIFont systemFontOfSize:16];
+    errorMessageLabel.font = [UIFont systemFontOfSize:14];
     
     errorMessageLabel.textColor = [[Tools defaultTools] colorWithHexString:@"#888888"];
     
@@ -264,12 +284,22 @@
     
 }
 
+- (void)setMessage:(NSString *)message {
+    
+    _message = message;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.messageLabel.text = message;
+    });
+    
+}
+
 - (void)setTextFieldPlaceholder:(NSString *)textFieldPlaceholder {
     
     _textFieldPlaceholder = [textFieldPlaceholder copy];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        self.textField.placeholder = _textFieldPlaceholder;
+        self.textField.placeholder = [textFieldPlaceholder copy];
     });
     
 }
@@ -278,7 +308,11 @@
     
     _keyboardType = keyboardType;
     
-    self.textField.keyboardType = keyboardType;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.textField.keyboardType = keyboardType;
+        
+    });
     
 }
 

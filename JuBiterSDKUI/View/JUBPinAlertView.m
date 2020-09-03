@@ -11,6 +11,7 @@
 #define n1wPinTextFieldTag 300
 
 #import "JUBPinAlertView.h"
+#import "Tools.h"
 
 
 @interface JUBPinAlertView()<UITextFieldDelegate>
@@ -25,27 +26,35 @@
 
 
 #pragma mark - 输入pin码
-+ (void)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack {
++ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    __block JUBPinAlertView *pinAlertView;
+    
+    [Tools doUIActionInMainThread:^{
         
-        [[[JUBPinAlertView alloc] init] showInputPinAlert:inputPinCallBack
-        fingerprintsCallBack:nil];
+        pinAlertView = [[JUBPinAlertView alloc] init];
         
-    });
+        [pinAlertView showInputPinAlert:inputPinCallBack fingerprintsCallBack:nil];
+    }];
+    
+    return pinAlertView;
     
 }
 
 
-+ (void)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack
++ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack
      fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    __block JUBPinAlertView *pinAlertView;
+    
+    [Tools doUIActionInMainThread:^{
         
-        [[[JUBPinAlertView alloc] init] showInputPinAlert:inputPinCallBack
-        fingerprintsCallBack:fingerprintsCallBack];
+        pinAlertView = [[JUBPinAlertView alloc] init];
         
-    });
+        [pinAlertView showInputPinAlert:inputPinCallBack fingerprintsCallBack:fingerprintsCallBack];
+    }];
+    
+    return pinAlertView;
     
 }
 
@@ -116,20 +125,31 @@
         self.inputPinTextField.delegate = self;
     }];
     
-    [[self getCurrentVC] presentViewController:alertController
-                                      animated:YES
-                                    completion:nil];
+    //延迟执行，等待键盘类型被设置
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [[self getCurrentVC] presentViewController:alertController
+          animated:YES
+        completion:nil];
+        
+    });
+    
 }
 
 
 #pragma mark - 修改pin码
-+ (void)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack {
++ (JUBPinAlertView *)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    __block JUBPinAlertView *pinAlertView;
+    
+    [Tools doUIActionInMainThread:^{
         
-        [[[JUBPinAlertView alloc] init] showChangePinAlert:changePinCallBack];
+        pinAlertView = [[JUBPinAlertView alloc] init];
         
-    });
+        [pinAlertView showChangePinAlert:changePinCallBack];
+    }];
+    
+    return pinAlertView;
     
 }
 
@@ -191,9 +211,15 @@
         self.n1wPinTextField = textField;
     }];
     
-    [[self getCurrentVC] presentViewController:alertController
-                                      animated:YES
-                                    completion:nil];
+    //延迟执行，等待键盘类型被设置
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [[self getCurrentVC] presentViewController:alertController
+          animated:YES
+        completion:nil];
+        
+    });
+    
 }
 
 
@@ -236,6 +262,38 @@
     }
 }
 
+#pragma mark - getter setter
+- (void)setSecureTextEntry:(BOOL)secureTextEntry {
+    
+    _secureTextEntry = secureTextEntry;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.inputPinTextField.secureTextEntry = secureTextEntry;
+        
+        self.oldPinTextField.secureTextEntry = secureTextEntry;
+        
+        self.n1wPinTextField.secureTextEntry = secureTextEntry;
+        
+    });
+        
+}
+
+- (void)setKeyboardType:(UIKeyboardType)keyboardType {
+    
+    _keyboardType = keyboardType;
+        
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        self.inputPinTextField.keyboardType = keyboardType;
+        
+        self.oldPinTextField.keyboardType = keyboardType;
+        
+        self.n1wPinTextField.keyboardType = keyboardType;
+        
+    });
+    
+}
 
 #pragma mark - 获取当前控制器
 - (UIViewController *)getCurrentVC {

@@ -19,15 +19,22 @@ typedef void (^JUBChangePinCallBack)(NSString *oldPin, NSString *newPin);
 
 /// 弹出输入pin码弹框
 /// @param inputPinCallBack pin码回调block
-+ (void)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack;
++ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack;
 
 /// 弹出输入pin码弹框  带有指纹验证选项
 /// @param inputPinCallBack pin码回调block
-+ (void)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack;
++ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack
+fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack;
 
 /// 弹出修改pin码弹框
 /// @param changePinCallBack 新、旧pin码回调block
-+ (void)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack;
++ (JUBPinAlertView *)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack;
+
+@property (nonatomic, assign) BOOL secureTextEntry;
+
+//纯数字键盘 UIKeyboardTypeNumberPad
+//数字带小数点键盘 UIKeyboardTypeDecimalPad
+@property (nonatomic, assign) UIKeyboardType keyboardType;
 
 @end
 
