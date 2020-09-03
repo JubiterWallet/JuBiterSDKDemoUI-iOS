@@ -322,7 +322,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self.leftButton setTitle:_leftButtonTitle forState:UIControlStateNormal];
+        [self.leftButton setTitle:[leftButtonTitle copy] forState:UIControlStateNormal];
         
     });
     
@@ -334,7 +334,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        [self.rightButton setTitle:_rightButtonTitle forState:UIControlStateNormal];
+        [self.rightButton setTitle:[rightButtonTitle copy] forState:UIControlStateNormal];
         
     });
     
