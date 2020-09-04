@@ -21,9 +21,8 @@
 #import "JUBFingerManagerCell.h"
 #import "JUBInputAddressView.h"
 #import "JUBListAlert.h"
-#import "JUBPinAlertView.h"
+#import "JUBPinAlert.h"
 #import "JUBWarningAlert.h"
-#import "JUBInputAlert.h"
 #import "JUBCustomInputAlert.h"
 
 //controller

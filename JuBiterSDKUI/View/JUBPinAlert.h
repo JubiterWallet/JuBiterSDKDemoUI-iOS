@@ -1,5 +1,5 @@
 //
-//  JUBPinAlertView.h
+//  JUBPinAlert.h
 //  JuBiterSDKDemo
 //
 //  Created by zhangchuan on 2020/6/30.
@@ -15,20 +15,20 @@ typedef void (^JUBFingerprintsCallBack)(void);
 typedef void (^JUBChangePinCallBack)(NSString *oldPin, NSString *newPin);
 
 
-@interface JUBPinAlertView : NSObject
+@interface JUBPinAlert : NSObject
 
 /// 弹出输入pin码弹框
 /// @param inputPinCallBack pin码回调block
-+ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack;
++ (JUBPinAlert *)showInputPinCallBack:(JUBInputPinCallBack)inputPinCallBack;
 
 /// 弹出输入pin码弹框  带有指纹验证选项
 /// @param inputPinCallBack pin码回调block
-+ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack
++ (JUBPinAlert *)showInputPinCallBack:(JUBInputPinCallBack)inputPinCallBack
 fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack;
 
 /// 弹出修改pin码弹框
 /// @param changePinCallBack 新、旧pin码回调block
-+ (JUBPinAlertView *)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack;
++ (JUBPinAlert *)showChangePinCallBack:(JUBChangePinCallBack)changePinCallBack;
 
 @property (nonatomic, assign) BOOL secureTextEntry;
 

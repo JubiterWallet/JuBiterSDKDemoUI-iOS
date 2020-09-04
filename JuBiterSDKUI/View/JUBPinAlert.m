@@ -1,5 +1,5 @@
 //
-//  JUBPinAlertView.m
+//  JUBPinAlert.m
 //  JuBiterSDKDemo
 //
 //  Created by zhangchuan on 2020/6/30.
@@ -10,11 +10,11 @@
 #define oldPinTextFieldTag 200
 #define n1wPinTextFieldTag 300
 
-#import "JUBPinAlertView.h"
+#import "JUBPinAlert.h"
 #import "Tools.h"
 
 
-@interface JUBPinAlertView()<UITextFieldDelegate>
+@interface JUBPinAlert()<UITextFieldDelegate>
 @property (nonatomic, weak) UIAlertAction *okAction;
 @property (nonatomic, weak) UITextField *inputPinTextField;
 @property (nonatomic, weak) UITextField *oldPinTextField;
@@ -22,17 +22,17 @@
 @end
 
 
-@implementation JUBPinAlertView
+@implementation JUBPinAlert
 
 
 #pragma mark - 输入pin码
-+ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack {
++ (JUBPinAlert *)showInputPinCallBack:(JUBInputPinCallBack)inputPinCallBack {
     
-    __block JUBPinAlertView *pinAlertView;
+    __block JUBPinAlert *pinAlertView;
     
     [Tools doUIActionInMainThread:^{
         
-        pinAlertView = [[JUBPinAlertView alloc] init];
+        pinAlertView = [[JUBPinAlert alloc] init];
         
         [pinAlertView showInputPinAlert:inputPinCallBack fingerprintsCallBack:nil];
     }];
@@ -42,14 +42,14 @@
 }
 
 
-+ (JUBPinAlertView *)showInputPinAlert:(JUBInputPinCallBack)inputPinCallBack
++ (JUBPinAlert *)showInputPinCallBack:(JUBInputPinCallBack)inputPinCallBack
      fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack {
     
-    __block JUBPinAlertView *pinAlertView;
+    __block JUBPinAlert *pinAlertView;
     
     [Tools doUIActionInMainThread:^{
         
-        pinAlertView = [[JUBPinAlertView alloc] init];
+        pinAlertView = [[JUBPinAlert alloc] init];
         
         [pinAlertView showInputPinAlert:inputPinCallBack fingerprintsCallBack:fingerprintsCallBack];
     }];
@@ -138,13 +138,13 @@
 
 
 #pragma mark - 修改pin码
-+ (JUBPinAlertView *)showChangePinAlert:(JUBChangePinCallBack)changePinCallBack {
++ (JUBPinAlert *)showChangePinCallBack:(JUBChangePinCallBack)changePinCallBack {
     
-    __block JUBPinAlertView *pinAlertView;
+    __block JUBPinAlert *pinAlertView;
     
     [Tools doUIActionInMainThread:^{
         
-        pinAlertView = [[JUBPinAlertView alloc] init];
+        pinAlertView = [[JUBPinAlert alloc] init];
         
         [pinAlertView showChangePinAlert:changePinCallBack];
     }];
@@ -212,7 +212,7 @@
     }];
     
     //延迟执行，等待键盘类型被设置
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         [[self getCurrentVC] presentViewController:alertController
           animated:YES

@@ -7,6 +7,7 @@
 //
 
 #import "JUBOrderHistoryManager.h"
+#import <UIKit/UIKit.h>
 
 @interface JUBOrderHistoryManager()
 
@@ -37,7 +38,32 @@ static JUBOrderHistoryManager *_instance;
 
     NSString *path = [docPath stringByAppendingPathComponent:@"numbers.plist"];
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSArray *historys = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:nil];
+    NSArray *historys = nil;
+    
+    NSError *error;
+    
+    if (data) {
+
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 12.0) {
+                     
+            //@available仅仅是为了消除警告
+            if (@available(iOS 11.0, *)) {
+                historys = [NSKeyedUnarchiver unarchivedObjectOfClass:[NSArray class] fromData:data error:&error];
+            }
+         
+        } else {
+            
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+                    historys = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            #pragma clang diagnostic pop
+            
+        }
+        
+    }
+    
+    NSLog(@"error = %@", error.description);
+    
     NSLog(@"numbers = %@", historys);
     
     return historys;
@@ -53,8 +79,16 @@ static JUBOrderHistoryManager *_instance;
     NSString *path = [docPath stringByAppendingPathComponent:@"Documents/numbers.plist"];
     
     //将数据归档到path文件路径里面
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:historys requiringSecureCoding:NO error:nil];
-    BOOL success = [data writeToFile:path atomically:NO];
+    NSData *data;
+    BOOL success;
+    if (@available(iOS 11.0, *)) {
+        data = [NSKeyedArchiver archivedDataWithRootObject:historys requiringSecureCoding:NO error:nil];
+    } else {
+        // Fallback on earlier versions
+        data = [NSKeyedArchiver archivedDataWithRootObject:historys];
+    }
+    
+    success = [data writeToFile:path atomically:NO];
     
     if (success) {
         NSLog(@"文件归档成功");
