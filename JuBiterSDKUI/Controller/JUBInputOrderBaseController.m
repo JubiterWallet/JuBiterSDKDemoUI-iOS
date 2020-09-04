@@ -57,6 +57,12 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
     
+    if ([textView.text containsString:@"\n"]) {
+        [textView resignFirstResponder];
+        textView.text = [textView.text stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        return;
+    }
+    
     self.apduContent = textView.text;
         
     NSRange selection = textView.selectedRange;
