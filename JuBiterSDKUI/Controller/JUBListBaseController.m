@@ -81,7 +81,7 @@
         
         [TransmitSegment addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
         
-        TransmitSegment.tintColor = [UIColor whiteColor];
+        TransmitSegment.tintColor = [[Tools defaultTools] colorWithHexString:@"#00ccff"];
         
         [self.view addSubview:TransmitSegment];
     }
@@ -103,26 +103,6 @@
     
     [self.view addSubview:view];
 }
-
-
-//- (NSArray *)getButtonModelArray {
-//
-//    NSArray *buttonTitleArray = [self getButtonTitleArray];
-//
-//    NSMutableArray *buttonModelArray = [NSMutableArray array];
-//
-//    for (NSString *title in buttonTitleArray) {
-//
-//        JUBButtonModel *model = [[JUBButtonModel alloc] init];
-//
-//        model.title = title;
-//
-//        [buttonModelArray addObject:model];
-//    }
-//
-//    return buttonModelArray;
-//}
-
 
 #pragma mark - 页面内部按钮回调方法
 - (void)segmentAction:(UISegmentedControl *)seg {

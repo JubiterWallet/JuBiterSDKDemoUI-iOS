@@ -231,6 +231,10 @@
 #pragma mark - textField代理
 - (void)changedInputPinTextField:(UITextField *)textField {
     
+    if (self.errorMessageLabel.text.length > 0) {
+        self.errorMessageLabel.text = @"";
+    }
+    
     if (self.limitLength > 0 && textField.text.length > self.limitLength) {
         textField.text = [textField.text substringToIndex:textField.text.length - 1];
     }
