@@ -116,6 +116,8 @@
         
         textField.keyboardType = UIKeyboardTypeNumberPad;
         
+        textField.secureTextEntry = YES;
+        
         [textField addTarget:self
                       action:@selector(changedInputPinTextField:)
             forControlEvents:UIControlEventEditingChanged];
@@ -191,6 +193,8 @@
         
         textField.keyboardType = UIKeyboardTypeNumberPad;
         
+        textField.secureTextEntry = YES;
+        
         [textField addTarget:self
                       action:@selector(changedOldPinTextField:)
             forControlEvents:UIControlEventEditingChanged];
@@ -203,6 +207,8 @@
         textField.placeholder = @"Please enter new PIN";
         
         textField.keyboardType = UIKeyboardTypeNumberPad;
+        
+        textField.secureTextEntry = YES;
         
         [textField addTarget:self
                       action:@selector(changedN1wPinTextField:)
@@ -263,37 +269,6 @@
 }
 
 #pragma mark - getter setter
-- (void)setSecureTextEntry:(BOOL)secureTextEntry {
-    
-    _secureTextEntry = secureTextEntry;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        self.inputPinTextField.secureTextEntry = secureTextEntry;
-        
-        self.oldPinTextField.secureTextEntry = secureTextEntry;
-        
-        self.n1wPinTextField.secureTextEntry = secureTextEntry;
-        
-    });
-        
-}
-
-//- (void)setKeyboardType:(UIKeyboardType)keyboardType {
-//    
-//    _keyboardType = keyboardType;
-//        
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        
-//        self.inputPinTextField.keyboardType = keyboardType;
-//        
-//        self.oldPinTextField.keyboardType = keyboardType;
-//        
-//        self.n1wPinTextField.keyboardType = keyboardType;
-//        
-//    });
-//    
-//}
 
 #pragma mark - 获取当前控制器
 - (UIViewController *)getCurrentVC {

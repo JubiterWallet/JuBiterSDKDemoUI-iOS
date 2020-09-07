@@ -30,8 +30,6 @@ fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack;
 /// @param changePinCallBack 新、旧pin码回调block
 + (JUBPinAlert *)showChangePinCallBack:(JUBChangePinCallBack)changePinCallBack;
 
-@property (nonatomic, assign) BOOL secureTextEntry;
-
 ////纯数字键盘 UIKeyboardTypeNumberPad
 ////数字带小数点键盘 UIKeyboardTypeDecimalPad
 //@property (nonatomic, assign) UIKeyboardType keyboardType;
