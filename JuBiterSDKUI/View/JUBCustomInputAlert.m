@@ -249,9 +249,24 @@
 #pragma mark - action
 - (void)cancel {
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+   NSString *content = nil;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        [self removeFromSuperview];
+        self.inputCallBackBlock(content, ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self removeFromSuperview];
+            });
+            
+            
+        }, ^(NSString * _Nonnull errorMessage) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.errorMessageLabel.text = errorMessage;
+            });
+            
+        });
         
     });
     

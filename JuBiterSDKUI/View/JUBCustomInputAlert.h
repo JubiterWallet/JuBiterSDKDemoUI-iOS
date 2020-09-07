@@ -14,7 +14,7 @@ typedef void (^JUBDissAlertCallBack)(void);
 
 typedef void (^JUBSetErrorCallBack)(NSString *errorMessage);
 
-typedef void (^JUBInputCallBackBlock)(NSString *content, JUBDissAlertCallBack dissAlertCallBack, JUBSetErrorCallBack setErrorCallBack);
+typedef void (^JUBInputCallBackBlock)(NSString * _Nullable content, JUBDissAlertCallBack dissAlertCallBack, JUBSetErrorCallBack setErrorCallBack);
 
 @interface JUBCustomInputAlert : UIView
 

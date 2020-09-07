@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^JUBInputPinCallBack)( NSString * _Nullable pin);
+typedef void (^JUBInputPinCallBack)(NSString * _Nullable pin);
 typedef void (^JUBFingerprintsCallBack)(void);
 typedef void (^JUBChangePinCallBack)(NSString *oldPin, NSString *newPin);
 
