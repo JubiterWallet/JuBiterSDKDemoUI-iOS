@@ -114,7 +114,7 @@
         
         textField.placeholder = @"Please enter PIN";
         
-        textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
         
         [textField addTarget:self
                       action:@selector(changedInputPinTextField:)
@@ -189,7 +189,7 @@
         
         textField.placeholder = @"Please enter old PIN";
         
-        textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
         
         [textField addTarget:self
                       action:@selector(changedOldPinTextField:)
@@ -202,7 +202,7 @@
         
         textField.placeholder = @"Please enter new PIN";
         
-        textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
         
         [textField addTarget:self
                       action:@selector(changedN1wPinTextField:)
@@ -279,21 +279,21 @@
         
 }
 
-- (void)setKeyboardType:(UIKeyboardType)keyboardType {
-    
-    _keyboardType = keyboardType;
-        
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        self.inputPinTextField.keyboardType = keyboardType;
-        
-        self.oldPinTextField.keyboardType = keyboardType;
-        
-        self.n1wPinTextField.keyboardType = keyboardType;
-        
-    });
-    
-}
+//- (void)setKeyboardType:(UIKeyboardType)keyboardType {
+//    
+//    _keyboardType = keyboardType;
+//        
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        
+//        self.inputPinTextField.keyboardType = keyboardType;
+//        
+//        self.oldPinTextField.keyboardType = keyboardType;
+//        
+//        self.n1wPinTextField.keyboardType = keyboardType;
+//        
+//    });
+//    
+//}
 
 #pragma mark - 获取当前控制器
 - (UIViewController *)getCurrentVC {

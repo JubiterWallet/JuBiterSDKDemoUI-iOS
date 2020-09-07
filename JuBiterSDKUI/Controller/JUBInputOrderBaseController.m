@@ -105,11 +105,95 @@
         apduTextView.layer.borderColor = [[Tools defaultTools] colorWithHexString:@"#e0e0e0"].CGColor;
         
         apduTextView.layer.borderWidth = 1;
+        
+        apduTextView.returnKeyType = UIReturnKeyDone;
+                
+        apduTextView.keyboardType = UIKeyboardTypeNumberPad;
+        
+        [self addKeyBoardSubViewToTextView:apduTextView];
 
         self.apduTextView = apduTextView;
                 
+        [self.apduTextView becomeFirstResponder];
     }
 
+}
+
+- (void)addKeyBoardSubViewToTextView:(UITextView *)apduTextView {
+    
+    UIView *subView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, 120)];
+    
+    subView.backgroundColor = [UIColor whiteColor];
+        
+    apduTextView.inputAccessoryView = subView;
+    
+    CGFloat toolBarHeight = 40;
+    
+    {
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 20/11.0 * 15, 20)];
+        
+        imageView.center = CGPointMake(KScreenWidth/2, imageView.center.y);
+        
+        imageView.image = [UIImage imageNamed:@"JUBKeyboardDismissKey"];
+            
+        [subView addSubview:imageView];
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, KScreenWidth, toolBarHeight)];
+        
+        [subView addSubview:button];
+        
+        [button addTarget:self action:@selector(dismissKeyBoard) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    NSArray *array = @[@"A", @"B", @"C", @"D", @"E", @"F"];
+    
+    CGFloat buttonWidth = KScreenWidth/3.0;
+    
+    CGFloat buttonHeight = (CGRectGetHeight(subView.frame) - toolBarHeight)/2.0;
+    
+    for (NSInteger i = 0; i < array.count; i++) {
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(i%3 * buttonWidth, toolBarHeight + i/3 * buttonHeight, buttonWidth, buttonHeight)];
+        
+        [button setTitle:array[i] forState:UIControlStateNormal];
+        
+        [button setTitleColor:[[Tools defaultTools] colorWithHexString:@"#426EB4"] forState:UIControlStateNormal];
+                
+        [button setBackgroundColor:[UIColor whiteColor]];
+        
+        button.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        
+        button.layer.borderWidth = 1;
+        
+        button.tag = i;
+        
+        [button addTarget:self action:@selector(tapKeyButton:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [subView addSubview:button];
+        
+    }
+    
+}
+
+- (void)tapKeyButton:(UIButton *)button {
+    
+    NSArray *array = @[@"A", @"B", @"C", @"D", @"E", @"F"];
+    
+    NSLog(@"array[button.tag] = %@", array[button.tag]);
+    
+    self.apduTextView.text = [self.apduTextView.text stringByAppendingString:array[button.tag]];
+    
+    self.apduContent = self.apduTextView.text;
+    
+}
+
+- (void)dismissKeyBoard {
+    
+    NSLog(@"dismissKeyBoard");
+    
+    [self.apduTextView resignFirstResponder];
+    
 }
 
 - (void)initMainView {

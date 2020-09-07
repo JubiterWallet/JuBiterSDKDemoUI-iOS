@@ -26,6 +26,7 @@
 
 @property (nonatomic, weak) UIButton *rightButton;
 
+@property (nonatomic, assign) UIKeyboardType keyboardType;
 
 @end
 
@@ -33,6 +34,13 @@
 
 + (JUBCustomInputAlert *)showCallBack:(JUBInputCallBackBlock)inputCallBackBlock {
         
+    JUBCustomInputAlert *inputAlert = [JUBCustomInputAlert showCallBack:inputCallBackBlock keyboardType:UIKeyboardTypeDefault];
+    
+    return inputAlert;
+}
+
++ (JUBCustomInputAlert *)showCallBack:(JUBInputCallBackBlock)inputCallBackBlock keyboardType:(UIKeyboardType)keyboardType {
+    
     __block JUBCustomInputAlert *inputAlert;
     
     [Tools doUIActionInMainThread:^{
@@ -44,6 +52,8 @@
         
         [inputAlert addSubviewAboveSuperView:whiteMainView];
     }];
+    
+    inputAlert.keyboardType = keyboardType;
         
     return inputAlert;
     
@@ -140,7 +150,7 @@
 - (UITextField *)addTextFieldAboveSuperView:(UIView *)mainView frame:(CGRect)frame {
     
     UITextField *textField = [[UITextField alloc] initWithFrame:frame];
-                
+                    
     textField.placeholder = @"";
                 
     textField.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -151,11 +161,6 @@
               action:@selector(changedInputPinTextField:)
     forControlEvents:UIControlEventEditingChanged];
         
-    //Wait to set the keyboard type
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [textField becomeFirstResponder];
-    });
-    
     [mainView addSubview:textField];
         
     return textField;
@@ -315,6 +320,8 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         self.textField.keyboardType = keyboardType;
+        
+        [self.textField becomeFirstResponder];
         
     });
     

@@ -3,7 +3,7 @@
 //  F4000BleTest
 //
 //  Created by zhangchuan on 2020/8/31.
-//  Copyright © 2020 FEITIAN. All rights reserved.
+//  Copyright © 2020 JuBiter. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

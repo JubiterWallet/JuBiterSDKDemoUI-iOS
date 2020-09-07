@@ -20,15 +20,15 @@ typedef void (^JUBInputCallBackBlock)(NSString *content, JUBDissAlertCallBack di
 
 + (JUBCustomInputAlert *)showCallBack:(JUBInputCallBackBlock)inputCallBackBlock;
 
+//纯数字键盘 UIKeyboardTypeNumberPad
+//数字带小数点键盘 UIKeyboardTypeDecimalPad
++ (JUBCustomInputAlert *)showCallBack:(JUBInputCallBackBlock)inputCallBackBlock keyboardType:(UIKeyboardType)keyboardType;
+
 @property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, copy) NSString *message;
 
 @property (nonatomic, copy) NSString *textFieldPlaceholder;
-
-//纯数字键盘 UIKeyboardTypeNumberPad
-//数字带小数点键盘 UIKeyboardTypeDecimalPad
-@property (nonatomic, assign) UIKeyboardType keyboardType;
 
 @property (nonatomic, copy) NSString *leftButtonTitle;
 

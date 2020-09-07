@@ -32,9 +32,9 @@ fingerprintsCallBack:(JUBFingerprintsCallBack)fingerprintsCallBack;
 
 @property (nonatomic, assign) BOOL secureTextEntry;
 
-//纯数字键盘 UIKeyboardTypeNumberPad
-//数字带小数点键盘 UIKeyboardTypeDecimalPad
-@property (nonatomic, assign) UIKeyboardType keyboardType;
+////纯数字键盘 UIKeyboardTypeNumberPad
+////数字带小数点键盘 UIKeyboardTypeDecimalPad
+//@property (nonatomic, assign) UIKeyboardType keyboardType;
 
 @end
 
