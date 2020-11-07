@@ -100,7 +100,7 @@
     }
     
     UIButton *navRightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    
+    [navRightBtn sizeToFit];
     [navRightBtn setTitle:self.navRightButtonTitle forState:UIControlStateNormal];
     
     navRightBtn.hidden = NO;

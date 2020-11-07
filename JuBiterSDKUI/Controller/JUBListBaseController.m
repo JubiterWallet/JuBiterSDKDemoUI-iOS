@@ -184,7 +184,7 @@
 - (void)setLeftNAVButtonTitle:(NSString *)leftNAVButtonTitle {
     
     _leftNAVButtonTitle = leftNAVButtonTitle;
-    
+    [self.leftNAVButton sizeToFit];
     [self.leftNAVButton setTitle:leftNAVButtonTitle forState:UIControlStateNormal];
     
 }
@@ -192,7 +192,7 @@
 - (void)setRightNAVButtonTitle:(NSString *)rightNAVButtonTitle {
     
     _rightNAVButtonTitle = rightNAVButtonTitle;
-    
+    [self.rightNAVButton sizeToFit];
     [self.rightNAVButton setTitle:rightNAVButtonTitle forState:UIControlStateNormal];
     
 }
