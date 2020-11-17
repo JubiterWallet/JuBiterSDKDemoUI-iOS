@@ -23,6 +23,8 @@
 
 @property (nonatomic, weak) UIButton *leftButton;
 
+@property (nonatomic, weak) UIButton *middleButton;
+
 @end
 
 @implementation JUBFingerManagerBaseController
@@ -64,7 +66,7 @@
     
     CGFloat height = 40;
     
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, 15, (KScreenWidth - 2 * margin)/2, height)];
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(margin, 15, (KScreenWidth - 2 * margin)/3, height)];
     
     self.leftButton = leftButton;
     
@@ -76,9 +78,27 @@
     
     [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
+    leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     [self.view addSubview:leftButton];
     
-    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftButton.frame) + 1, 15, (KScreenWidth - 2 * margin)/2, height)];
+    UIButton *middleButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftButton.frame) + 1, 15, (KScreenWidth - 2 * margin)/3, height)];
+    
+    [middleButton setTitle:@"TimeOut" forState:UIControlStateNormal];
+    
+    [middleButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [middleButton setBackgroundColor:[[Tools defaultTools] colorWithHexString:@"#00ccff"]];
+    
+    [middleButton addTarget:self action:@selector(middleButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    middleButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    
+    self.middleButton = middleButton;
+    
+    [self.view addSubview:middleButton];
+    
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(middleButton.frame) + 1, 15, (KScreenWidth - 2 * margin)/3, height)];
     
     [rightButton setTitle:@"Erase ALL" forState:UIControlStateNormal];
     
@@ -88,6 +108,8 @@
     
     [rightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    
     [self.view addSubview:rightButton];
 }
 
@@ -96,6 +118,16 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
         [self fingerPrintEntry];
+        
+    });
+    
+}
+
+- (void)middleButtonClick {
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        [self timeOutEntry];
         
     });
     
@@ -268,6 +300,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+//指纹录入时间录入
+- (void)timeOutEntry {
+    
+}
+
 //清空指纹
 - (void)clearFingerPrint {
     
@@ -300,6 +337,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         });
         
     }
+    
+}
+
+- (void)setTimeOut:(NSInteger *)timeOut {
+    
+    _timeOut = timeOut;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.middleButton setTitle:[NSString stringWithFormat:@"TimeOut(%d)", timeOut] forState:UIControlStateNormal];
+    });
     
 }
 
