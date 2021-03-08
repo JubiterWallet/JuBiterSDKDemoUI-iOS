@@ -16,6 +16,7 @@ typedef void (^JUBWarningCallBack)(void);
 
 + (void)warningAlert:(NSString *)message warningCallBack:(JUBWarningCallBack)warningCallBack;
 
++ (void)warningSureAlert:(NSString *)message;
 @end
 
 NS_ASSUME_NONNULL_END

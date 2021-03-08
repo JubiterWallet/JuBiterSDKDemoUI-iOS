@@ -38,4 +38,22 @@
     
 }
 
++ (void)warningSureAlert:(NSString *)message {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Attention" message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alertController addAction:okAction];
+
+        [[Tools getCurrentVC] presentViewController:alertController animated:YES completion:nil];
+        
+    });
+
+}
+
 @end
